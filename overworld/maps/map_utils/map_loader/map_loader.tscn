@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b2wsovfqjyaov"]
+
+[ext_resource type="Script" uid="uid://dhobf0ppcwm8q" path="res://overworld/maps/map_utils/map_loader/map_loader.gd" id="1_8mjdx"]
+[ext_resource type="PackedScene" uid="uid://bsq2c6ms5dvk8" path="res://overworld/maps/map_scenes/main_hub/main_hub.tscn" id="2_2mmi0"]
+[ext_resource type="PackedScene" uid="uid://3vlgb1dguhjs" path="res://overworld/characters/character_scene/player/player.tscn" id="2_1027e"]
+[ext_resource type="PackedScene" uid="uid://b58rv4kxtgmc7" path="res://overworld/maps/map_scenes/room_1_to_oxygen_bay/room_1_to_oxygen_bay.tscn" id="3_2mmi0"]
+
+[node name="MapLoader" type="Node2D" unique_id=858919211 node_paths=PackedStringArray("player")]
+y_sort_enabled = true
+script = ExtResource("1_8mjdx")
+maps = Dictionary[String, PackedScene]({
+"MainHub": ExtResource("2_2mmi0"),
+"Room1ToOxygenBay": ExtResource("3_2mmi0")
+})
+default_map = "MainHub"
+player = NodePath("Player")
+
+[node name="Player" parent="." unique_id=2094364497 instance=ExtResource("2_1027e")]
+
+[node name="MapHolder" type="Node2D" parent="." unique_id=324416665]
+y_sort_enabled = true

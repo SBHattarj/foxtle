@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://jtp3wf3kgmth"]
+
+[ext_resource type="PackedScene" uid="uid://ct875kbna4cn8" path="res://overworld/characters/base_character.tscn" id="1_svpc3"]
+[ext_resource type="Script" uid="uid://cm0845ipgprb5" path="res://overworld/characters/character_scene/file_character/file_character.gd" id="2_0uvu4"]
+[ext_resource type="Texture2D" uid="uid://br7nfw3nlx6tj" path="res://kritta_images/cooling_unit.png" id="3_dppio"]
+[ext_resource type="Script" uid="uid://4frpjmltw5a5" path="res://overworld/characters/character_scene/file_character/file_character_dialogue_holder.gd" id="3_rlk8y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcmkh"]
+atlas = ExtResource("3_dppio")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cpbh"]
+atlas = ExtResource("3_dppio")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1a52u"]
+atlas = ExtResource("3_dppio")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3orqw"]
+atlas = ExtResource("3_dppio")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dppio"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcmkh")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cpbh")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1a52u")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3orqw")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_rlk8y"]
+script = ExtResource("3_rlk8y")
+character_name = "AI"
+dialogue = "Just read the digital label so that I can know what to move."
+metadata/_custom_type_script = "uid://4frpjmltw5a5"
+
+[sub_resource type="Resource" id="Resource_dppio"]
+script = ExtResource("3_rlk8y")
+character_name = "AI"
+dialogue = "Anything registered in the database you can't pick up."
+next_dialogue = SubResource("Resource_rlk8y")
+metadata/_custom_type_script = "uid://4frpjmltw5a5"
+
+[sub_resource type="Resource" id="Resource_bcmkh"]
+script = ExtResource("3_rlk8y")
+character_name = "[color={protag_color}]{protag_name}[/color]"
+dialogue = "[color={protag_color}]I can't pick this up, is this stuck to the floor?[/color]"
+next_dialogue = SubResource("Resource_dppio")
+return_value = 10
+metadata/_custom_type_script = "uid://4frpjmltw5a5"
+
+[node name="FileCharacter" unique_id=2094364497 node_paths=PackedStringArray("sprite") instance=ExtResource("1_svpc3")]
+script = ExtResource("2_0uvu4")
+in_world_name = ""
+appearance = 0
+appearances = Array[SpriteFrames]([SubResource("SpriteFrames_dppio")])
+dialogue_index = 0
+dialogues = Array[ExtResource("3_rlk8y")]([SubResource("Resource_bcmkh")])
+is_spawner = false
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2" unique_id=784401771]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_dppio")
+animation = &"down"

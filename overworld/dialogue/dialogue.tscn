@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://cmxgy0lwl58rn"]
+
+[ext_resource type="Script" uid="uid://b30wj7q8hkme1" path="res://overworld/dialogue/dialogue.gd" id="1_javst"]
+[ext_resource type="Texture2D" uid="uid://fr45x108ueoq" path="res://ui/ui_panel_texture.tres" id="2_pbp5j"]
+
+[sub_resource type="Theme" id="Theme_ttwm5"]
+RichTextLabel/constants/outline_size = 4
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_21eab"]
+texture = ExtResource("2_pbp5j")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dyhc8"]
+texture = ExtResource("2_pbp5j")
+
+[node name="Dialogue" type="CanvasLayer" unique_id=802574169]
+visible = false
+script = ExtResource("1_javst")
+
+[node name="Control" type="Control" parent="." unique_id=1541116155]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 577.0
+offset_bottom = 324.0
+accessibility_name = "DialogueContainer"
+theme = SubResource("Theme_ttwm5")
+
+[node name="DialoguePanel" type="Panel" parent="Control" unique_id=1864612964]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+accessibility_name = "DialoguePannel"
+theme_override_styles/panel = SubResource("StyleBoxTexture_21eab")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/DialoguePanel" unique_id=1162579056]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+accessibility_name = "DialogueMargin"
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Dialogue" type="RichTextLabel" parent="Control/DialoguePanel/MarginContainer" unique_id=738852931]
+layout_mode = 2
+accessibility_name = "Diualogue"
+bbcode_enabled = true
+scroll_active = false
+
+[node name="Panel" type="Panel" parent="Control" unique_id=845701978]
+layout_mode = 0
+offset_top = 128.0
+offset_right = 256.0
+offset_bottom = 176.0
+accessibility_name = "NameSection"
+theme_override_styles/panel = SubResource("StyleBoxTexture_dyhc8")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel" unique_id=1709385048]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+accessibility_name = "NameMargin"
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Name" type="RichTextLabel" parent="Control/Panel/MarginContainer" unique_id=2066423827]
+layout_mode = 2
+accessibility_name = "Name"
+bbcode_enabled = true
+scroll_active = false
+
+[node name="TypeTimer" type="Timer" parent="." unique_id=1681356150]

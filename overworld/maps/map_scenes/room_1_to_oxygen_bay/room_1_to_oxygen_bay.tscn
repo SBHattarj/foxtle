@@ -1,0 +1,156 @@
+[gd_scene format=4 uid="uid://b58rv4kxtgmc7"]
+
+[ext_resource type="TileSet" uid="uid://0iil885swtwj" path="res://overworld/tilemaps/spaceshipt_insed.tres" id="1_ncm7w"]
+[ext_resource type="Script" uid="uid://cuv5e0e7mitp6" path="res://overworld/maps/map.gd" id="2_mlsuj"]
+[ext_resource type="Script" uid="uid://b6gsepvcc0r2f" path="res://overworld/maps/in_gate.gd" id="3_mlsuj"]
+[ext_resource type="Script" uid="uid://sserttecf06" path="res://overworld/maps/map_utils/out_gate/out_gate.gd" id="4_m16k2"]
+[ext_resource type="PackedScene" uid="uid://jtp3wf3kgmth" path="res://overworld/characters/character_scene/file_character/file_character.tscn" id="5_byang"]
+[ext_resource type="PackedScene" uid="uid://5j2yq0qbq7g2" path="res://overworld/characters/character_scene/terminal/terminal.tscn" id="6_wh47t"]
+[ext_resource type="Script" uid="uid://bfgykbtu0hbp0" path="res://overworld/characters/character_scene/terminal/component_checker.gd" id="7_8ndlt"]
+[ext_resource type="Script" uid="uid://20okh1dlqyfj" path="res://overworld/events/event.gd" id="8_p2cbp"]
+[ext_resource type="Script" uid="uid://crxfutc2dv8jr" path="res://utils/holder/gate_holder.gd" id="9_hlnq7"]
+[ext_resource type="Script" uid="uid://dnkw46hjtnxkw" path="res://utils/holder/memory_holder.gd" id="10_1dsrp"]
+[ext_resource type="TileSet" uid="uid://dl4g2wij35upi" path="res://overworld/tilemaps/spaceship_inside_broken_parts.tres" id="11_1dsrp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_byang"]
+size = Vector2(32, 16)
+
+[sub_resource type="Resource" id="Resource_p2cbp"]
+script = ExtResource("7_8ndlt")
+character_name = "Cooler Unit 001"
+metadata/_custom_type_script = "uid://bfgykbtu0hbp0"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8w38"]
+size = Vector2(22, 8)
+
+[node name="Room1ToOxygenBay" type="TileMapLayer" unique_id=1762661958 node_paths=PackedStringArray("in_gates", "file_character_spawn_location")]
+self_modulate = Color(0.9233301, 0.84197617, 0.80526435, 1)
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAANAAcAAAAFAAcAAAANAAYAAAAFAAMAAAANAAUAAAAFAAYAAAANAAQAAAAFAAYAAAANAAMAAAAFAAYAAAANAAIAAAAFAAMAAAANAAEAAAAFAAIAAAAMAAcAAAADAAcAAAAMAAYAAAADAAUAAAAMAAUAAAABAAQAAAAMAAQAAAABAAQAAAAMAAMAAAABAAQAAAAMAAIAAAADAAUAAAAMAAEAAAAHAAIAAAALAAcAAAADAAcAAAALAAYAAAADAAMAAAALAAUAAAACAAQAAAALAAQAAAABAAMAAAALAAMAAAABAAUAAAALAAIAAAAEAAMAAAALAAEAAAAGAAIAAAAKAAcAAAABAAcAAAAKAAYAAAADAAQAAAAKAAUAAAACAAQAAAAKAAQAAAAEAAMAAAAKAAMAAAADAAUAAAAKAAIAAAABAAYAAAAKAAEAAAABAAIAAAAJAAcAAAADAAcAAAAJAAYAAAACAAMAAAAJAAUAAAAEAAYAAAAJAAQAAAADAAMAAAAJAAMAAAACAAQAAAAJAAIAAAABAAQAAAAJAAEAAAADAAIAAAAIAAcAAAABAAcAAAAIAAYAAAACAAMAAAAIAAUAAAABAAMAAAAIAAQAAAAEAAMAAAAIAAMAAAADAAYAAAAIAAIAAAADAAUAAAAIAAEAAAAEAAIAAAAHAAcAAAACAAcAAAAHAAYAAAAEAAMAAAAHAAUAAAACAAUAAAAHAAQAAAACAAUAAAAHAAMAAAADAAMAAAAHAAIAAAAEAAYAAAAHAAEAAAAEAAIAAAAGAAcAAAAEAAcAAAAGAAYAAAACAAUAAAAGAAUAAAAEAAMAAAAGAAQAAAAEAAUAAAAGAAMAAAAEAAUAAAAGAAIAAAAEAAYAAAAGAAEAAAABAAIAAAAFAAcAAAAEAAcAAAAFAAYAAAAEAAQAAAAFAAUAAAADAAUAAAAFAAQAAAAEAAUAAAAFAAMAAAACAAQAAAAFAAIAAAADAAQAAAAFAAEAAAADAAIAAAAEAAcAAAADAAMAAAAEAAYAAAACAAQAAAAEAAUAAAABAAYAAAAEAAQAAAACAAYAAAAEAAMAAAACAAUAAAAEAAIAAAAEAAUAAAAEAAEAAAACAAIAAAADAAcAAAADAAMAAAADAAYAAAACAAUAAAADAAUAAAABAAUAAAADAAQAAAADAAMAAAADAAMAAAABAAYAAAADAAIAAAADAAYAAAADAAEAAAABAAIAAAACAAcAAAADAAcAAAACAAYAAAACAAUAAAACAAUAAAABAAMAAAACAAQAAAACAAYAAAACAAMAAAACAAUAAAACAAIAAAAEAAQAAAACAAEAAAABAAIAAAABAAcAAAAAAAcAAAABAAYAAAAAAAQAAAABAAUAAAAAAAUAAAABAAQAAAAAAAYAAAABAAMAAAAAAAYAAAABAAIAAAAAAAQAAAABAAEAAAAAAAIAAAANAAAAAAAFAAEAAAANAP//AAAFAAEAAAANAP7/AAAFAAEAAAANAP3/AAAFAAEAAAANAPz/AAAFAAEAAAANAPv/AAAFAAAAAAAMAAAAAAAHAAEAAAAMAP//AAAHAAAAAAAMAP7/AAAEAAEAAAAMAP3/AAAEAAEAAAAMAPz/AAACAAEAAAAMAPv/AAAEAAAAAAALAAAAAAAGAAEAAAALAP//AAAGAAAAAAALAP7/AAABAAEAAAALAP3/AAAEAAEAAAALAPz/AAADAAEAAAALAPv/AAACAAAAAAAKAAAAAAAEAAEAAAAKAP//AAAEAAEAAAAKAP7/AAACAAEAAAAKAP3/AAADAAEAAAAKAPz/AAADAAEAAAAKAPv/AAAEAAAAAAAJAAAAAAAEAAEAAAAJAP//AAABAAEAAAAJAP7/AAADAAEAAAAJAP3/AAAEAAEAAAAJAPz/AAAEAAEAAAAJAPv/AAACAAAAAAAIAAAAAAABAAEAAAAIAP//AAADAAEAAAAIAP7/AAADAAEAAAAIAP3/AAAEAAEAAAAIAPz/AAABAAEAAAAIAPv/AAACAAAAAAAHAAAAAAABAAEAAAAHAP//AAADAAEAAAAHAP7/AAABAAEAAAAHAP3/AAAEAAEAAAAHAPz/AAABAAEAAAAHAPv/AAACAAAAAAAGAAAAAAABAAEAAAAGAP//AAACAAEAAAAGAP7/AAACAAEAAAAGAP3/AAABAAEAAAAGAPz/AAADAAEAAAAGAPv/AAADAAAAAAAFAAAAAAABAAEAAAAFAP//AAABAAEAAAAFAP7/AAADAAEAAAAFAP3/AAAEAAEAAAAFAPz/AAABAAEAAAAFAPv/AAACAAAAAAAEAAAAAAABAAEAAAAEAP//AAACAAEAAAAEAP7/AAADAAEAAAAEAP3/AAACAAEAAAAEAPz/AAADAAEAAAAEAPv/AAABAAAAAAADAAAAAAABAAEAAAADAP//AAABAAEAAAADAP7/AAAEAAEAAAADAP3/AAAEAAEAAAADAPz/AAABAAEAAAADAPv/AAABAAAAAAACAAAAAAABAAEAAAACAP//AAABAAEAAAACAP7/AAABAAEAAAACAP3/AAAEAAEAAAACAPz/AAABAAEAAAACAPv/AAAEAAAAAAABAAAAAAAAAAEAAAABAP//AAAAAAEAAAABAP7/AAAAAAEAAAABAP3/AAAAAAEAAAABAPz/AAAAAAEAAAABAPv/AAAAAAAAAAADAAgAAAAGAAMAAAAEAAgAAAAGAAMAAAA=")
+tile_set = ExtResource("1_ncm7w")
+script = ExtResource("2_mlsuj")
+in_gates = [NodePath("InGateMainHub")]
+file_character_spawn_location = NodePath("Characters")
+
+[node name="InGateMainHub" type="Node2D" parent="." unique_id=1033511187]
+position = Vector2(64, 116)
+script = ExtResource("3_mlsuj")
+
+[node name="ToMainHub" type="Area2D" parent="." unique_id=160986619]
+position = Vector2(64, 120)
+script = ExtResource("4_m16k2")
+enter_directions = Array[int]([1])
+map = "MainHub"
+gate = 1
+metadata/_custom_type_script = "uid://sserttecf06"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToMainHub" unique_id=1602456966]
+shape = SubResource("RectangleShape2D_byang")
+
+[node name="M3sez0Pkja" parent="." unique_id=2094364497 instance=ExtResource("5_byang")]
+position = Vector2(128, 116)
+in_world_name = "Cooler Unit 001"
+is_spawner = true
+
+[node name="Characters" type="Node2D" parent="." unique_id=1940941238]
+y_sort_enabled = true
+
+[node name="Terminal" parent="." unique_id=1574513233 node_paths=PackedStringArray("valid_event") instance=ExtResource("6_wh47t")]
+position = Vector2(120, 32)
+component_checkers = Array[ExtResource("7_8ndlt")]([SubResource("Resource_p2cbp")])
+valid_event = NodePath("TerminalDialogue")
+state = 5
+terminal_show_name = "Main Terminal"
+
+[node name="TerminalDialogue" type="Node2D" parent="Terminal" unique_id=1626776634 node_paths=PackedStringArray("next_events")]
+script = ExtResource("8_p2cbp")
+one_time = false
+character_name = "Main Terminal"
+dialogue = "Components Stable."
+next_events = [NodePath("TerminalDialogue[Debug]")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="TerminalDialogue[Debug]" type="Node2D" parent="Terminal/TerminalDialogue" unique_id=840018391 node_paths=PackedStringArray("terminal", "next_events")]
+script = ExtResource("8_p2cbp")
+character_name = "Main Terminal"
+dialogue = "Opened Gate to next room."
+save_status = true
+terminal = NodePath("../..")
+next_events = [NodePath("TurnOnGate")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="TurnOnGate" type="Node2D" parent="Terminal/TerminalDialogue/TerminalDialogue[Debug]" unique_id=427084799 node_paths=PackedStringArray("target")]
+script = ExtResource("8_p2cbp")
+type = 8
+target = NodePath("../../../../GateHolder")
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="DialogueAI" type="Node2D" parent="." unique_id=238455609 node_paths=PackedStringArray("terminal", "next_events")]
+position = Vector2(120, 32)
+script = ExtResource("8_p2cbp")
+start_type = 1
+character_name = "AI"
+dialogue = "The terminal is broken. It must have some components missing. They might be here in this room somewhere."
+save_status = true
+terminal = NodePath("../Terminal")
+next_events = [NodePath("DialogueAI")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="DialogueAI" type="Node2D" parent="DialogueAI" unique_id=962642837 node_paths=PackedStringArray("next_events")]
+script = ExtResource("8_p2cbp")
+character_name = "AI"
+dialogue = "I'll open the database and..."
+next_events = [NodePath("open_map_dir"), NodePath("AIDialogue")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="open_map_dir" type="Node2D" parent="DialogueAI/DialogueAI" unique_id=2001063196]
+position = Vector2(-120, -32)
+script = ExtResource("8_p2cbp")
+type = 7
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="AIDialogue" type="Node2D" parent="DialogueAI/DialogueAI" unique_id=2121112705 node_paths=PackedStringArray("next_events")]
+script = ExtResource("8_p2cbp")
+character_name = "AI"
+dialogue = "..."
+next_events = [NodePath("AIDialogue")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="AIDialogue" type="Node2D" parent="DialogueAI/DialogueAI/AIDialogue" unique_id=1970427380]
+script = ExtResource("8_p2cbp")
+character_name = "AI"
+dialogue = "Ohh... the names are mangled, I can't understand which of the entries might be the missing component."
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="AIDialogue" type="Node2D" parent="DialogueAI/DialogueAI/AIDialogue/AIDialogue" unique_id=742411707]
+script = ExtResource("8_p2cbp")
+character_name = "AI"
+dialogue = "You need to check the terminal and the component so that I can see what to move."
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="ToNext" type="Area2D" parent="." unique_id=2103532963]
+position = Vector2(192, 24)
+script = ExtResource("4_m16k2")
+map = "MainHub"
+is_disabled = true
+metadata/_custom_type_script = "uid://sserttecf06"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToNext" unique_id=580193509]
+shape = SubResource("RectangleShape2D_j8w38")
+
+[node name="GateHolder" type="Node2D" parent="." unique_id=364346342 node_paths=PackedStringArray("gate")]
+script = ExtResource("9_hlnq7")
+gate = NodePath("../ToNext")
+metadata/_custom_type_script = "uid://crxfutc2dv8jr"
+
+[node name="MemoryHolder" type="Node2D" parent="." unique_id=1139293277 node_paths=PackedStringArray("terminal", "target")]
+script = ExtResource("10_1dsrp")
+terminal = NodePath("../Terminal")
+target = NodePath("../GateHolder")
+metadata/_custom_type_script = "uid://dnkw46hjtnxkw"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1191013163]
+self_modulate = Color(0.92156863, 0.84313726, 0.8039216, 1)
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAGAAYAAAAAAAMAAAAGAAUAAAAAAAIAAAAFAAUAAAAAAAIAAAAFAAQAAAAAAAIAAAAJAAYAAAABAAMAAAAKAAYAAAABAAMAAAALAAUAAAABAAMAAAALAAQAAAABAAMAAAAJAAUAAAABAAMAAAAJAAQAAAABAAMAAAAIAAMAAAABAAIAAAAHAAMAAAABAAIAAAACAAQAAAABAAIAAAAKAAIAAAABAAIAAAABAAMAAAAAAAIAAAABAAEAAAAAAAIAAAABAAUAAAAAAAIAAAAKAAMAAAACAAIAAAAMAAUAAAACAAIAAAALAAYAAAACAAIAAAADAAEAAAACAAIAAAAKAAQAAAADAAIAAAAFAAYAAAADAAIAAAADAAQAAAADAAIAAAAMAAMAAAADAAIAAAANAAQAAAAFAAIAAAANAAYAAAAFAAIAAAADAAUAAAADAAMAAAACAAYAAAADAAMAAAA=")
+tile_set = ExtResource("11_1dsrp")

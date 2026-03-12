@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://5j2yq0qbq7g2"]
+
+[ext_resource type="PackedScene" uid="uid://ct875kbna4cn8" path="res://overworld/characters/base_character.tscn" id="1_d45v1"]
+[ext_resource type="Texture2D" uid="uid://3gdgepdjrgl8" path="res://kritta_images/terminal.png" id="2_3l12h"]
+[ext_resource type="Script" uid="uid://cq5k5x8hmcw5x" path="res://overworld/characters/character_scene/terminal/terminal.gd" id="2_r2jhe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3l12h"]
+size = Vector2(64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2jhe"]
+atlas = ExtResource("2_3l12h")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7qvb"]
+atlas = ExtResource("2_3l12h")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjoi8"]
+atlas = ExtResource("2_3l12h")
+region = Rect2(256, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s44un"]
+atlas = ExtResource("2_3l12h")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yq0ce"]
+atlas = ExtResource("2_3l12h")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vwj4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2jhe")
+}],
+"loop": true,
+"name": &"face",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7qvb")
+}],
+"loop": true,
+"name": &"info",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjoi8")
+}],
+"loop": true,
+"name": &"processing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s44un")
+}],
+"loop": true,
+"name": &"shut",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yq0ce")
+}],
+"loop": true,
+"name": &"warning",
+"speed": 5.0
+}]
+
+[node name="Terminal" unique_id=2094364497 node_paths=PackedStringArray("component_checkers", "sprite") instance=ExtResource("1_d45v1")]
+y_sort_enabled = true
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("2_r2jhe")
+component_checkers = []
+type_map = Dictionary[int, String]({
+0: "Cooler"
+})
+state = 0
+terminal_name = "main_terminal"
+terminal_show_name = null
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=584581368]
+shape = SubResource("RectangleShape2D_3l12h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2" unique_id=546900571]
+sprite_frames = SubResource("SpriteFrames_1vwj4")
+animation = &"shut"
+frame_progress = 0.028056102
+offset = Vector2(0, -32)

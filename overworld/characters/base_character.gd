@@ -4,6 +4,7 @@ class_name CharacterBase
 
 #region signals
 signal interacted_by(other: CharacterBase)
+signal velocity_changed(character: CharacterBase)
 #endregion
 #region enums
 enum Direction {
@@ -88,6 +89,9 @@ var normal_speed := 100.0
 func _handle_joystick_change(joystick: Vector2) -> void:
 	velocity = joystick * normal_speed
 	_handle_animation_change()
+	_handle_direction()
+	velocity_changed_emit(self)
+func _handle_direction():
 	if is_zero_approx(velocity.length()): return
 	if not is_zero_approx(velocity.x):
 		_handle_vertical_direction()
@@ -118,6 +122,15 @@ func get_target() -> CharacterBase:
 		return body
 	return null
 
+func velocity_changed_emit(character: CharacterBase):
+	velocity_changed.emit(character)
+
 func interacted_by_emit(other: CharacterBase):
 	interacted_by.emit(other)
+
+func delete_self():
+	if is_inside_tree():
+		# so that the character is removed immediately before being qued to be freed
+		get_parent().remove_child(self)
+	queue_free()
 #endregion

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://3vlgb1dguhjs"]
 
 [ext_resource type="PackedScene" uid="uid://ct875kbna4cn8" path="res://overworld/characters/base_character.tscn" id="1_kqbyn"]
+[ext_resource type="Script" uid="uid://cb5nu6l3mke47" path="res://overworld/characters/character_scene/player/player.gd" id="2_cr1e3"]
 [ext_resource type="Script" uid="uid://g0err1cujku2" path="res://overworld/characters/controllers/button_controller/button_controller.gd" id="2_mnxum"]
 [ext_resource type="Texture2D" uid="uid://ss0qeqf5rc42" path="res://kritta_images/arew.png" id="3_cr1e3"]
 
@@ -188,21 +189,29 @@ animations = [{
 }]
 
 [node name="Player" unique_id=2094364497 node_paths=PackedStringArray("sprite", "controller") instance=ExtResource("1_kqbyn")]
+script = ExtResource("2_cr1e3")
+current_map = ""
 sprite = NodePath("AnimatedSprite2D")
 controller = NodePath("ButtonController")
 
 [node name="ButtonController" type="Node2D" parent="." index="2" unique_id=932715815 node_paths=PackedStringArray("character")]
 position = Vector2(0, -8)
 script = ExtResource("2_mnxum")
-character = NodePath("")
+character = NodePath("..")
 metadata/_custom_type_script = "uid://g0err1cujku2"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3" unique_id=681090886]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_pujbp")
 animation = &"up"
-frame_progress = 0.34314156
+frame_progress = 0.6783169
 
 [node name="Camera2D" type="Camera2D" parent="." index="4" unique_id=264338760]
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
+
+[node name="Timer" type="Timer" parent="." index="5" unique_id=175555616]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="save"]

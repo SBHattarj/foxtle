@@ -1,0 +1,209 @@
+[gd_scene format=4 uid="uid://bsq2c6ms5dvk8"]
+
+[ext_resource type="TileSet" uid="uid://0iil885swtwj" path="res://overworld/tilemaps/spaceshipt_insed.tres" id="1_innoh"]
+[ext_resource type="Script" uid="uid://cuv5e0e7mitp6" path="res://overworld/maps/map.gd" id="2_5m43l"]
+[ext_resource type="Script" uid="uid://b6gsepvcc0r2f" path="res://overworld/maps/in_gate.gd" id="3_00su7"]
+[ext_resource type="Script" uid="uid://20okh1dlqyfj" path="res://overworld/events/event.gd" id="4_r7wix"]
+[ext_resource type="PackedScene" uid="uid://5j2yq0qbq7g2" path="res://overworld/characters/character_scene/terminal/terminal.tscn" id="5_ae8xj"]
+[ext_resource type="TileSet" uid="uid://dl4g2wij35upi" path="res://overworld/tilemaps/spaceship_inside_broken_parts.tres" id="6_situh"]
+[ext_resource type="Script" uid="uid://sserttecf06" path="res://overworld/maps/map_utils/out_gate/out_gate.gd" id="7_5m43l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00su7"]
+size = Vector2(22, 8)
+
+[node name="MainHub" type="TileMapLayer" unique_id=1486689043 node_paths=PackedStringArray("in_gates")]
+self_modulate = Color(0.92156863, 0.84313726, 0.8039216, 1)
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAARAAUAAAAFAAcAAAARAAQAAAAFAAMAAAARAAMAAAAFAAQAAAARAAIAAAAFAAUAAAARAAEAAAAFAAIAAAAQAAUAAAADAAcAAAAQAAQAAAAEAAUAAAAQAAMAAAAEAAQAAAAQAAIAAAABAAMAAAAQAAEAAAACAAIAAAAPAAUAAAABAAcAAAAPAAQAAAAEAAUAAAAPAAMAAAADAAYAAAAPAAIAAAAEAAYAAAAPAAEAAAACAAIAAAAOAAUAAAACAAcAAAAOAAQAAAADAAYAAAAOAAMAAAAEAAQAAAAOAAIAAAADAAUAAAAOAAEAAAADAAIAAAANAAUAAAACAAcAAAANAAQAAAAEAAQAAAANAAMAAAAEAAUAAAANAAIAAAAEAAMAAAANAAEAAAADAAIAAAAMAAUAAAABAAcAAAAMAAQAAAACAAMAAAAMAAMAAAADAAYAAAAMAAIAAAABAAMAAAAMAAEAAAADAAIAAAALAAUAAAADAAcAAAALAAQAAAAEAAUAAAALAAMAAAAEAAMAAAALAAIAAAAEAAMAAAALAAEAAAABAAIAAAAKAAUAAAACAAcAAAAKAAQAAAABAAMAAAAKAAMAAAAEAAUAAAAKAAIAAAACAAYAAAAKAAEAAAAEAAIAAAAJAAUAAAACAAcAAAAJAAQAAAABAAQAAAAJAAMAAAADAAYAAAAJAAIAAAABAAMAAAAJAAEAAAAHAAIAAAAIAAUAAAADAAcAAAAIAAQAAAABAAUAAAAIAAMAAAABAAUAAAAIAAIAAAABAAUAAAAIAAEAAAAGAAIAAAAHAAUAAAABAAcAAAAHAAQAAAACAAUAAAAHAAMAAAADAAYAAAAHAAIAAAABAAMAAAAHAAEAAAADAAIAAAAGAAUAAAAEAAcAAAAGAAQAAAABAAQAAAAGAAMAAAABAAYAAAAGAAIAAAACAAYAAAAGAAEAAAABAAIAAAAFAAUAAAACAAcAAAAFAAQAAAADAAQAAAAFAAMAAAAEAAQAAAAFAAIAAAADAAUAAAAFAAEAAAADAAIAAAAEAAUAAAACAAcAAAAEAAQAAAADAAUAAAAEAAMAAAADAAYAAAAEAAIAAAADAAUAAAAEAAEAAAACAAIAAAADAAUAAAABAAcAAAADAAQAAAADAAQAAAADAAMAAAABAAYAAAADAAIAAAABAAUAAAADAAEAAAABAAIAAAACAAUAAAAEAAcAAAACAAQAAAABAAQAAAACAAMAAAABAAUAAAACAAIAAAAEAAQAAAACAAEAAAADAAIAAAABAAUAAAAAAAcAAAABAAQAAAAAAAMAAAABAAMAAAAAAAMAAAABAAIAAAAAAAQAAAABAAEAAAAAAAIAAAARAAAAAAAFAAEAAAARAP//AAAFAAEAAAARAP7/AAAFAAEAAAARAP3/AAAFAAEAAAARAPz/AAAFAAEAAAARAPv/AAAFAAAAAAAQAAAAAAACAAEAAAAQAP//AAABAAEAAAAQAP7/AAABAAEAAAAQAP3/AAADAAEAAAAQAPz/AAACAAEAAAAQAPv/AAACAAAAAAAPAAAAAAABAAEAAAAPAP//AAACAAEAAAAPAP7/AAACAAEAAAAPAP3/AAABAAEAAAAPAPz/AAABAAEAAAAPAPv/AAAEAAAAAAAOAAAAAAABAAEAAAAOAP//AAACAAEAAAAOAP7/AAABAAEAAAAOAP3/AAABAAEAAAAOAPz/AAADAAEAAAAOAPv/AAAEAAAAAAANAAAAAAACAAEAAAANAP//AAAEAAEAAAANAP7/AAAEAAEAAAANAP3/AAABAAEAAAANAPz/AAADAAEAAAANAPv/AAADAAAAAAAMAAAAAAADAAEAAAAMAP//AAABAAEAAAAMAP7/AAAEAAEAAAAMAP3/AAACAAEAAAAMAPz/AAADAAEAAAAMAPv/AAAEAAAAAAALAAAAAAADAAEAAAALAP//AAACAAEAAAALAP7/AAAEAAEAAAALAP3/AAADAAEAAAALAPz/AAACAAEAAAALAPv/AAADAAAAAAAKAAAAAAAEAAEAAAAKAP//AAADAAEAAAAKAP7/AAADAAEAAAAKAP3/AAADAAEAAAAKAPz/AAAEAAEAAAAKAPv/AAAEAAAAAAAJAAAAAAAHAAEAAAAJAP//AAAHAAAAAAAJAP7/AAACAAEAAAAJAP3/AAABAAEAAAAJAPz/AAADAAEAAAAJAPv/AAABAAAAAAAIAAAAAAAGAAEAAAAIAP//AAAGAAAAAAAIAP7/AAADAAEAAAAIAP3/AAAEAAEAAAAIAPz/AAAEAAEAAAAIAPv/AAAEAAAAAAAHAAAAAAADAAEAAAAHAP//AAACAAEAAAAHAP7/AAADAAEAAAAHAP3/AAAEAAEAAAAHAPz/AAADAAEAAAAHAPv/AAADAAAAAAAGAAAAAAACAAEAAAAGAP//AAABAAEAAAAGAP7/AAABAAEAAAAGAP3/AAABAAEAAAAGAPz/AAAEAAEAAAAGAPv/AAADAAAAAAAFAAAAAAACAAEAAAAFAP//AAABAAEAAAAFAP7/AAACAAEAAAAFAP3/AAAEAAEAAAAFAPz/AAADAAEAAAAFAPv/AAABAAAAAAAEAAAAAAACAAEAAAAEAP//AAACAAEAAAAEAP7/AAABAAEAAAAEAP3/AAAEAAEAAAAEAPz/AAACAAEAAAAEAPv/AAACAAAAAAADAAAAAAACAAEAAAADAP//AAACAAEAAAADAP7/AAADAAEAAAADAP3/AAADAAEAAAADAPz/AAADAAEAAAADAPv/AAABAAAAAAACAAAAAAABAAEAAAACAP//AAAEAAEAAAACAP7/AAACAAEAAAACAP3/AAADAAEAAAACAPz/AAACAAEAAAACAPv/AAAEAAAAAAABAAAAAAAAAAEAAAABAP//AAAAAAEAAAABAP7/AAAAAAEAAAABAP3/AAAAAAEAAAABAPz/AAAAAAEAAAABAPv/AAAAAAAAAAA=")
+tile_set = ExtResource("1_innoh")
+script = ExtResource("2_5m43l")
+in_gates = [NodePath("FirstGate"), NodePath("InGate")]
+
+[node name="FirstGate" type="Node2D" parent="." unique_id=325806345]
+position = Vector2(88, 72)
+script = ExtResource("3_00su7")
+
+[node name="DialogueProtag" type="Node2D" parent="." unique_id=403285687 node_paths=PackedStringArray("terminal", "next_events")]
+script = ExtResource("4_r7wix")
+start_type = 1
+character_name = "[color={protag_color}]{protag_name}[/color]"
+dialogue = "[color={protag_color}]Huh?[/color]"
+save_status = true
+terminal = NodePath("../Terminal")
+next_events = [NodePath("DialogueProtag"), NodePath("ProtagTurnLeft")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="DialogueProtag" type="Node2D" parent="DialogueProtag" unique_id=627265805 node_paths=PackedStringArray("wait_for_events", "next_events")]
+script = ExtResource("4_r7wix")
+character_name = "[color={protag_color}]{protag_name}[/color]"
+dialogue = "[color={protag_color}]Where is this?[/color]"
+wait_for_events = [NodePath("../ProtagTurnLeft/ProtagTurnRight")]
+next_events = [NodePath("DialogueAI"), NodePath("AIWarning")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="DialogueAI" type="Node2D" parent="DialogueProtag/DialogueProtag" unique_id=2018635395 node_paths=PackedStringArray("next_events")]
+script = ExtResource("4_r7wix")
+character_name = "AI"
+dialogue = "What are you doing here?"
+next_events = [NodePath("TurnProtagUp"), NodePath("DialogueProtag")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="DialogueProtag" type="Node2D" parent="DialogueProtag/DialogueProtag/DialogueAI" unique_id=1749835503 node_paths=PackedStringArray("wait_for_events", "next_events")]
+script = ExtResource("4_r7wix")
+character_name = "[color={protag_color}]{protag_name}[/color]"
+dialogue = "[color={protag_color}]Huh?[/color]"
+wait_for_events = [NodePath("../TurnProtagUp")]
+next_events = [NodePath("DialogueAI2"), NodePath("AIFace")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="DialogueAI2" type="Node2D" parent="DialogueProtag/DialogueProtag/DialogueAI/DialogueProtag" unique_id=1090792702 node_paths=PackedStringArray("next_events")]
+script = ExtResource("4_r7wix")
+character_name = "AI"
+dialogue = "The ship is supposed to be out of commision."
+next_events = [NodePath("DialogueProtag")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="DialogueProtag" type="Node2D" parent="DialogueProtag/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI2" unique_id=1183441592 node_paths=PackedStringArray("next_events")]
+script = ExtResource("4_r7wix")
+character_name = "[color={protag_color}]{protag_name}[/color]"
+dialogue = "[color={protag_color}]What do you mean?[/color]"
+next_events = [NodePath("DialogueAI"), NodePath("AIProcessing")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="DialogueAI" type="Node2D" parent="DialogueProtag/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI2/DialogueProtag" unique_id=13294638 node_paths=PackedStringArray("next_events")]
+script = ExtResource("4_r7wix")
+character_name = "AI"
+dialogue = "Ugh... no matter, let me just... huh?"
+next_events = [NodePath("DialogueProtag"), NodePath("AIFace")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="DialogueProtag" type="Node2D" parent="DialogueProtag/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI2/DialogueProtag/DialogueAI" unique_id=1465896375 node_paths=PackedStringArray("next_events")]
+script = ExtResource("4_r7wix")
+character_name = "[color={protag_color}]{protag_name}[/color]"
+dialogue = "[color={protag_color}]Something happen?[/color]"
+next_events = [NodePath("DialogueAI")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="DialogueAI" type="Node2D" parent="DialogueProtag/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI2/DialogueProtag/DialogueAI/DialogueProtag" unique_id=1545780534 node_paths=PackedStringArray("next_events")]
+script = ExtResource("4_r7wix")
+character_name = "AI"
+dialogue = "I can't access the other systems. But you need oxygen... do you have a card?"
+next_events = [NodePath("DialogueProtag")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="DialogueProtag" type="Node2D" parent="DialogueProtag/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI2/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI" unique_id=58883341 node_paths=PackedStringArray("next_events")]
+script = ExtResource("4_r7wix")
+character_name = "[color={protag_color}]{protag_name}[/color]"
+dialogue = "[color={protag_color}]Hmm... yes I do.[/color]"
+next_events = [NodePath("DialogueAI")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="DialogueAI" type="Node2D" parent="DialogueProtag/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI2/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI/DialogueProtag" unique_id=1722334734 node_paths=PackedStringArray("next_events")]
+script = ExtResource("4_r7wix")
+character_name = "AI"
+dialogue = "Come here and register the ID."
+next_events = [NodePath("MoveProtagAIX")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="MoveProtagAIX" type="Node2D" parent="DialogueProtag/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI2/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI" unique_id=1026542336 node_paths=PackedStringArray("next_events")]
+position = Vector2(88, 72)
+script = ExtResource("4_r7wix")
+type = 4
+is_player = true
+next_events = [NodePath("MoveProtagAIY")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="MoveProtagAIY" type="Node2D" parent="DialogueProtag/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI2/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI/MoveProtagAIX" unique_id=1322032699 node_paths=PackedStringArray("next_events")]
+position = Vector2(0, -47)
+script = ExtResource("4_r7wix")
+type = 5
+is_player = true
+next_events = [NodePath("TurnProtagAI")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="TurnProtagAI" type="Node2D" parent="DialogueProtag/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI2/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI/MoveProtagAIX/MoveProtagAIY" unique_id=1955256239 node_paths=PackedStringArray("next_events")]
+script = ExtResource("4_r7wix")
+type = 2
+is_player = true
+next_events = [NodePath("DialogueAI")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="DialogueAI" type="Node2D" parent="DialogueProtag/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI2/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI/MoveProtagAIX/MoveProtagAIY/TurnProtagAI" unique_id=815159268]
+script = ExtResource("4_r7wix")
+character_name = "AI"
+dialogue = "Good. Now go through the gate to the right. You have to register the rooms for me to fix the systems."
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="AIFace" type="Node2D" parent="DialogueProtag/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI2/DialogueProtag/DialogueAI" unique_id=2036337077 node_paths=PackedStringArray("target")]
+script = ExtResource("4_r7wix")
+type = 6
+state = 1
+target = NodePath("../../../../../../../../Terminal")
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="AIProcessing" type="Node2D" parent="DialogueProtag/DialogueProtag/DialogueAI/DialogueProtag/DialogueAI2/DialogueProtag" unique_id=1734335477 node_paths=PackedStringArray("target")]
+script = ExtResource("4_r7wix")
+type = 6
+state = 4
+target = NodePath("../../../../../../../Terminal")
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="AIFace" type="Node2D" parent="DialogueProtag/DialogueProtag/DialogueAI/DialogueProtag" unique_id=1033279883 node_paths=PackedStringArray("target")]
+script = ExtResource("4_r7wix")
+type = 6
+state = 1
+target = NodePath("../../../../../Terminal")
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="TurnProtagUp" type="Node2D" parent="DialogueProtag/DialogueProtag/DialogueAI" unique_id=133614261]
+script = ExtResource("4_r7wix")
+type = 2
+is_player = true
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="AIWarning" type="Node2D" parent="DialogueProtag/DialogueProtag" unique_id=2042822023 node_paths=PackedStringArray("target")]
+script = ExtResource("4_r7wix")
+type = 6
+state = 3
+target = NodePath("../../../Terminal")
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="ProtagTurnLeft" type="Node2D" parent="DialogueProtag" unique_id=151165925 node_paths=PackedStringArray("next_events")]
+script = ExtResource("4_r7wix")
+type = 2
+direction = 2
+is_player = true
+next_events = [NodePath("ProtagTurnRight")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="ProtagTurnRight" type="Node2D" parent="DialogueProtag/ProtagTurnLeft" unique_id=90560934]
+script = ExtResource("4_r7wix")
+type = 2
+direction = 3
+is_player = true
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="Terminal" parent="." unique_id=2094364497 instance=ExtResource("5_ae8xj")]
+position = Vector2(88, 25)
+terminal_show_name = "Main Terminal"
+
+[node name="Debris" type="TileMapLayer" parent="." unique_id=1383029708]
+self_modulate = Color(0.92156863, 0.84313726, 0.8039216, 1)
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAACAAEAAAADAAMAAAAGAAQAAAAFAAIAAAAKAAMAAAACAAIAAAALAAEAAAACAAIAAAANAAMAAAADAAMAAAAPAAEAAAADAAIAAAABAAMAAAAAAAIAAAARAAQAAAAFAAIAAAAQAAEAAAAEAAIAAAALAAQAAAABAAQAAAAHAAIAAAAAAAQAAAADAAQAAAAAAAQAAAAQAAQAAAADAAMAAAAMAAQAAAADAAIAAAAQAAIAAAADAAIAAAAEAAQAAAAFAAIAAAACAAQAAAAFAAIAAAARAAEAAAAFAAIAAAAOAAQAAAACAAIAAAA=")
+tile_set = ExtResource("6_situh")
+
+[node name="OutGate" type="Area2D" parent="." unique_id=1677961600]
+position = Vector2(144, 24)
+script = ExtResource("7_5m43l")
+map = "Room1ToOxygenBay"
+metadata/_custom_type_script = "uid://sserttecf06"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutGate" unique_id=1019400500]
+shape = SubResource("RectangleShape2D_00su7")
+
+[node name="InGate" type="Node2D" parent="." unique_id=2077440277]
+position = Vector2(144, 34)
+script = ExtResource("3_00su7")
+direction = 1
+metadata/_custom_type_script = "uid://b6gsepvcc0r2f"

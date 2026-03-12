@@ -15,6 +15,18 @@ run/main_scene="uid://bg5u10ifi44jt"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Core="*uid://civermw3y1lui"
+Signals="*uid://bhr8nu64i4kdn"
+SharedVars="*uid://j7srt0fr816x"
+
+[debug]
+
+gdscript/warnings/shadowed_variable=0
+gdscript/warnings/shadowed_variable_base_class=0
+gdscript/warnings/integer_division=0
+
 [display]
 
 window/size/viewport_width=576

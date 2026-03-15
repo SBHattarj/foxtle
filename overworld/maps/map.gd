@@ -19,6 +19,7 @@ func _ready():
 	spawn_characters_from_names(character_names)
 
 func spawn_characters_from_names(character_names: PackedStringArray):
+	print(character_names)
 	for character_name in character_names:
 		Core.load_file_character(character_name)
 		var character: FileCharacter = file_character_scene.instantiate()
@@ -33,7 +34,7 @@ func _focus_exited():
 func _focus_entered():
 	var character_names := Core.get_file_characters_in_map()
 	for character_index in range(len(characters)):
-		var character := characters[-character_index-1]
+		var character := characters[len(characters)-character_index-1]
 		if character.name not in character_names:
 			character.delete_self()
 			characters.erase(character)

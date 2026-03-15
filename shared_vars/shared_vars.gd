@@ -6,7 +6,11 @@ func changed_emit(name: String):
 	changed.emit(name)
 
 var type_map: Dictionary[int, String] = {
-	0: "Cooler"
+	0: "Cooler",
+	1: "Graphics",
+	2: "Memory",
+	3: "Power",
+	4: "Processing"
 }
 
 @export

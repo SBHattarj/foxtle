@@ -1,0 +1,251 @@
+[gd_scene format=4 uid="uid://bkgfcyxacejtf"]
+
+[ext_resource type="TileSet" uid="uid://0iil885swtwj" path="res://overworld/tilemaps/spaceshipt_insed.tres" id="1_qgpdn"]
+[ext_resource type="TileSet" uid="uid://dl4g2wij35upi" path="res://overworld/tilemaps/spaceship_inside_broken_parts.tres" id="2_4hn1m"]
+[ext_resource type="Script" uid="uid://cuv5e0e7mitp6" path="res://overworld/maps/map.gd" id="2_7leuc"]
+[ext_resource type="PackedScene" uid="uid://5j2yq0qbq7g2" path="res://overworld/characters/character_scene/terminal/terminal.tscn" id="3_arids"]
+[ext_resource type="Script" uid="uid://bfgykbtu0hbp0" path="res://overworld/characters/character_scene/terminal/component_checker.gd" id="4_4hn1m"]
+[ext_resource type="PackedScene" uid="uid://jtp3wf3kgmth" path="res://overworld/characters/character_scene/file_character/file_character.tscn" id="5_arids"]
+[ext_resource type="Script" uid="uid://20okh1dlqyfj" path="res://overworld/events/event.gd" id="6_1mqq2"]
+[ext_resource type="Script" uid="uid://b6gsepvcc0r2f" path="res://overworld/maps/in_gate.gd" id="7_546pj"]
+[ext_resource type="Script" uid="uid://sserttecf06" path="res://overworld/maps/map_utils/out_gate/out_gate.gd" id="9_lawgg"]
+[ext_resource type="Script" uid="uid://dnkw46hjtnxkw" path="res://utils/holder/memory_holder.gd" id="10_3vuvi"]
+[ext_resource type="Script" uid="uid://crxfutc2dv8jr" path="res://utils/holder/gate_holder.gd" id="11_nrqmg"]
+
+[sub_resource type="Resource" id="Resource_y6dbm"]
+script = ExtResource("4_4hn1m")
+character_name = "Memory Unit 030"
+appearance = 2
+metadata/_custom_type_script = "uid://bfgykbtu0hbp0"
+
+[sub_resource type="Resource" id="Resource_7leuc"]
+script = ExtResource("4_4hn1m")
+character_name = "Power Unit 030"
+appearance = 3
+metadata/_custom_type_script = "uid://bfgykbtu0hbp0"
+
+[sub_resource type="Resource" id="Resource_546pj"]
+script = ExtResource("4_4hn1m")
+character_name = "Processing Unit 030"
+appearance = 4
+metadata/_custom_type_script = "uid://bfgykbtu0hbp0"
+
+[sub_resource type="Resource" id="Resource_el1q1"]
+script = ExtResource("4_4hn1m")
+character_name = "Cooler Unit 030"
+metadata/_custom_type_script = "uid://bfgykbtu0hbp0"
+
+[sub_resource type="Resource" id="Resource_arids"]
+script = ExtResource("4_4hn1m")
+character_name = "Memory Unit 001"
+appearance = 2
+metadata/_custom_type_script = "uid://bfgykbtu0hbp0"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x05fi"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btd3o"]
+size = Vector2(22, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_og8q6"]
+size = Vector2(22, 8)
+
+[node name="UpperCentralBay3" type="TileMapLayer" unique_id=57035735 node_paths=PackedStringArray("in_gates", "file_character_spawn_location")]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAWAAoAAAAFAAcAAAAWAAkAAAAFAAMAAAAWAAgAAAAFAAUAAAAWAAcAAAAFAAUAAAAWAAYAAAAFAAYAAAAWAAUAAAAFAAMAAAAWAAQAAAAFAAYAAAAWAAMAAAAFAAYAAAAWAAIAAAAFAAYAAAAWAAEAAAAFAAIAAAAVAAoAAAAEAAYAAAAVAAkAAAABAAMAAAAVAAgAAAAEAAUAAAAVAAcAAAAEAAQAAAAVAAYAAAABAAQAAAAVAAUAAAADAAYAAAAVAAQAAAAEAAYAAAAVAAMAAAAEAAMAAAAVAAIAAAABAAQAAAAVAAEAAAABAAIAAAAUAAoAAAADAAYAAAAUAAkAAAABAAMAAAAUAAgAAAAEAAQAAAAUAAcAAAABAAYAAAAUAAYAAAADAAQAAAAUAAUAAAABAAYAAAAUAAQAAAABAAMAAAAUAAMAAAADAAMAAAAUAAIAAAACAAUAAAAUAAEAAAADAAIAAAATAAoAAAACAAcAAAATAAkAAAACAAUAAAATAAgAAAABAAYAAAATAAcAAAACAAUAAAATAAYAAAADAAMAAAATAAUAAAABAAYAAAATAAQAAAACAAMAAAATAAMAAAAEAAUAAAATAAIAAAACAAYAAAATAAEAAAAHAAIAAAASAAoAAAAEAAcAAAASAAkAAAACAAUAAAASAAgAAAAEAAQAAAASAAcAAAAEAAUAAAASAAYAAAADAAQAAAASAAUAAAABAAQAAAASAAQAAAAEAAQAAAASAAMAAAABAAUAAAASAAIAAAABAAUAAAASAAEAAAAGAAIAAAARAAoAAAACAAcAAAARAAkAAAACAAQAAAARAAgAAAADAAQAAAARAAcAAAADAAQAAAARAAYAAAAEAAYAAAARAAUAAAADAAUAAAARAAQAAAADAAQAAAARAAMAAAADAAYAAAARAAIAAAAEAAYAAAARAAEAAAAEAAIAAAAQAAoAAAACAAcAAAAQAAkAAAADAAYAAAAQAAgAAAADAAUAAAAQAAcAAAACAAYAAAAQAAYAAAABAAMAAAAQAAUAAAAEAAYAAAAQAAQAAAAEAAQAAAAQAAMAAAABAAQAAAAQAAIAAAACAAMAAAAQAAEAAAADAAIAAAAPAAoAAAABAAcAAAAPAAkAAAABAAUAAAAPAAgAAAABAAQAAAAPAAcAAAADAAQAAAAPAAYAAAACAAYAAAAPAAUAAAADAAUAAAAPAAQAAAADAAMAAAAPAAMAAAABAAUAAAAPAAIAAAAEAAUAAAAPAAEAAAABAAIAAAAOAAoAAAACAAcAAAAOAAkAAAABAAMAAAAOAAgAAAACAAMAAAAOAAcAAAADAAMAAAAOAAYAAAACAAQAAAAOAAUAAAAEAAMAAAAOAAQAAAACAAUAAAAOAAMAAAABAAMAAAAOAAIAAAADAAUAAAAOAAEAAAAEAAIAAAANAAoAAAAEAAcAAAANAAkAAAABAAYAAAANAAgAAAAEAAQAAAANAAcAAAACAAUAAAANAAYAAAACAAQAAAANAAUAAAACAAYAAAANAAQAAAACAAUAAAANAAMAAAADAAMAAAANAAIAAAACAAUAAAANAAEAAAAEAAIAAAAMAAoAAAAEAAcAAAAMAAkAAAABAAYAAAAMAAgAAAACAAUAAAAMAAcAAAACAAYAAAAMAAYAAAAEAAQAAAAMAAUAAAACAAYAAAAMAAQAAAAEAAMAAAAMAAMAAAACAAQAAAAMAAIAAAAEAAUAAAAMAAEAAAACAAIAAAALAAoAAAADAAcAAAALAAkAAAAEAAQAAAALAAgAAAADAAQAAAALAAcAAAADAAUAAAALAAYAAAACAAMAAAALAAUAAAAEAAMAAAALAAQAAAACAAMAAAALAAMAAAABAAMAAAALAAIAAAABAAYAAAALAAEAAAABAAIAAAAKAAoAAAADAAcAAAAKAAkAAAADAAYAAAAKAAgAAAAEAAQAAAAKAAcAAAABAAYAAAAKAAYAAAACAAYAAAAKAAUAAAADAAUAAAAKAAQAAAACAAUAAAAKAAMAAAABAAMAAAAKAAIAAAAEAAQAAAAKAAEAAAABAAIAAAAJAAoAAAAEAAcAAAAJAAkAAAAEAAUAAAAJAAgAAAADAAYAAAAJAAcAAAABAAYAAAAJAAYAAAADAAQAAAAJAAUAAAADAAUAAAAJAAQAAAADAAQAAAAJAAMAAAAEAAMAAAAJAAIAAAAEAAQAAAAJAAEAAAADAAIAAAAIAAoAAAABAAcAAAAIAAkAAAAEAAYAAAAIAAgAAAADAAMAAAAIAAcAAAACAAUAAAAIAAYAAAADAAMAAAAIAAUAAAADAAYAAAAIAAQAAAACAAMAAAAIAAMAAAAEAAMAAAAIAAIAAAADAAUAAAAIAAEAAAAEAAIAAAAHAAoAAAADAAcAAAAHAAkAAAADAAMAAAAHAAgAAAADAAMAAAAHAAcAAAABAAQAAAAHAAYAAAADAAQAAAAHAAUAAAAEAAMAAAAHAAQAAAACAAUAAAAHAAMAAAABAAQAAAAHAAIAAAAEAAUAAAAHAAEAAAACAAIAAAAGAAoAAAABAAcAAAAGAAkAAAABAAMAAAAGAAgAAAACAAUAAAAGAAcAAAABAAUAAAAGAAYAAAABAAMAAAAGAAUAAAABAAYAAAAGAAQAAAADAAQAAAAGAAMAAAAEAAMAAAAGAAIAAAABAAUAAAAGAAEAAAACAAIAAAAFAAoAAAABAAcAAAAFAAkAAAABAAQAAAAFAAgAAAABAAQAAAAFAAcAAAADAAQAAAAFAAYAAAAEAAUAAAAFAAUAAAADAAMAAAAFAAQAAAABAAUAAAAFAAMAAAADAAQAAAAFAAIAAAACAAYAAAAFAAEAAAABAAIAAAAEAAoAAAACAAcAAAAEAAkAAAADAAQAAAAEAAgAAAAEAAUAAAAEAAcAAAACAAUAAAAEAAYAAAAEAAUAAAAEAAUAAAACAAMAAAAEAAQAAAACAAYAAAAEAAMAAAACAAQAAAAEAAIAAAACAAMAAAAEAAEAAAAHAAIAAAADAAoAAAADAAcAAAADAAkAAAAEAAMAAAADAAgAAAADAAMAAAADAAcAAAACAAQAAAADAAYAAAAEAAUAAAADAAUAAAACAAMAAAADAAQAAAADAAYAAAADAAMAAAAEAAYAAAADAAIAAAAEAAQAAAADAAEAAAAGAAIAAAACAAoAAAADAAcAAAACAAkAAAACAAUAAAACAAgAAAACAAMAAAACAAcAAAACAAQAAAACAAYAAAACAAQAAAACAAUAAAABAAYAAAACAAQAAAAEAAMAAAACAAMAAAABAAQAAAACAAIAAAACAAUAAAACAAEAAAACAAIAAAABAAoAAAAAAAcAAAABAAkAAAAAAAQAAAABAAgAAAAAAAUAAAABAAcAAAAAAAQAAAABAAYAAAAAAAQAAAABAAUAAAAAAAYAAAABAAQAAAAAAAUAAAABAAMAAAAAAAYAAAABAAIAAAAAAAYAAAABAAEAAAAAAAIAAAAWAAAAAAAFAAEAAAAWAP//AAAFAAEAAAAWAP7/AAAFAAEAAAAWAP3/AAAFAAEAAAAWAPz/AAAFAAAAAAAVAAAAAAACAAEAAAAVAP//AAABAAEAAAAVAP7/AAABAAEAAAAVAP3/AAADAAEAAAAVAPz/AAAEAAAAAAAUAAAAAAACAAEAAAAUAP//AAAEAAEAAAAUAP7/AAABAAEAAAAUAP3/AAADAAEAAAAUAPz/AAADAAAAAAATAAAAAAAHAAEAAAATAP//AAAHAAAAAAATAP7/AAABAAEAAAATAP3/AAADAAEAAAATAPz/AAADAAAAAAASAAAAAAAGAAEAAAASAP//AAAGAAAAAAASAP7/AAAEAAEAAAASAP3/AAAEAAEAAAASAPz/AAACAAAAAAARAAAAAAADAAEAAAARAP//AAACAAEAAAARAP7/AAACAAEAAAARAP3/AAACAAEAAAARAPz/AAACAAAAAAAQAAAAAAAEAAEAAAAQAP//AAAEAAEAAAAQAP7/AAAEAAEAAAAQAP3/AAAEAAEAAAAQAPz/AAAEAAAAAAAPAAAAAAAEAAEAAAAPAP//AAAEAAEAAAAPAP7/AAACAAEAAAAPAP3/AAACAAEAAAAPAPz/AAADAAAAAAAOAAAAAAACAAEAAAAOAP//AAACAAEAAAAOAP7/AAADAAEAAAAOAP3/AAABAAEAAAAOAPz/AAADAAAAAAANAAAAAAACAAEAAAANAP//AAADAAEAAAANAP7/AAAEAAEAAAANAP3/AAACAAEAAAANAPz/AAACAAAAAAAMAAAAAAACAAEAAAAMAP//AAACAAEAAAAMAP7/AAADAAEAAAAMAP3/AAADAAEAAAAMAPz/AAAEAAAAAAALAAAAAAACAAEAAAALAP//AAABAAEAAAALAP7/AAABAAEAAAALAP3/AAADAAEAAAALAPz/AAACAAAAAAAKAAAAAAAEAAEAAAAKAP//AAADAAEAAAAKAP7/AAABAAEAAAAKAP3/AAADAAEAAAAKAPz/AAABAAAAAAAJAAAAAAADAAEAAAAJAP//AAADAAEAAAAJAP7/AAABAAEAAAAJAP3/AAABAAEAAAAJAPz/AAADAAAAAAAIAAAAAAAEAAEAAAAIAP//AAAEAAEAAAAIAP7/AAABAAEAAAAIAP3/AAABAAEAAAAIAPz/AAADAAAAAAAHAAAAAAAEAAEAAAAHAP//AAAEAAEAAAAHAP7/AAABAAEAAAAHAP3/AAACAAEAAAAHAPz/AAAEAAAAAAAGAAAAAAADAAEAAAAGAP//AAADAAEAAAAGAP7/AAAEAAEAAAAGAP3/AAABAAEAAAAGAPz/AAAEAAAAAAAFAAAAAAADAAEAAAAFAP//AAACAAEAAAAFAP7/AAADAAEAAAAFAP3/AAAEAAEAAAAFAPz/AAACAAAAAAAEAAAAAAAHAAEAAAAEAP//AAAHAAAAAAAEAP7/AAACAAEAAAAEAP3/AAACAAEAAAAEAPz/AAADAAAAAAADAAAAAAAGAAEAAAADAP//AAAGAAAAAAADAP7/AAAEAAEAAAADAP3/AAACAAEAAAADAPz/AAADAAAAAAACAAAAAAACAAEAAAACAP//AAABAAEAAAACAP7/AAACAAEAAAACAP3/AAAEAAEAAAACAPz/AAACAAAAAAABAAAAAAAAAAEAAAABAP//AAAAAAEAAAABAP7/AAAAAAEAAAABAP3/AAAAAAEAAAABAPz/AAAAAAAAAAAUAAsAAAAGAAMAAAAVAAsAAAAGAAMAAAA=")
+tile_set = ExtResource("1_qgpdn")
+script = ExtResource("2_7leuc")
+in_gates = [NodePath("InGateLast"), NodePath("InGateNext"), NodePath("InGateRestingBay")]
+file_character_spawn_location = NodePath("SpawnedCharacters")
+
+[node name="debris" type="TileMapLayer" parent="." unique_id=701908587]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAFAAQAAAACAAIAAAAKAAUAAAABAAIAAAAMAAkAAAADAAIAAAAQAAUAAAACAAMAAAAFAAYAAAAFAAIAAAADAAcAAAAEAAIAAAAHAAIAAAADAAMAAAAKAAMAAAAAAAIAAAANAAQAAAADAAMAAAASAAcAAAAEAAMAAAAGAAkAAAACAAIAAAAJAAkAAAACAAMAAAAKAAkAAAABAAMAAAALAAkAAAABAAMAAAALAAgAAAAEAAMAAAALAAcAAAAEAAMAAAAEAAYAAAABAAIAAAAEAAUAAAABAAIAAAALAAYAAAABAAIAAAALAAUAAAABAAIAAAAJAAUAAAAEAAIAAAAIAAUAAAABAAIAAAAHAAUAAAABAAIAAAAGAAUAAAABAAIAAAAFAAMAAAAAAAMAAAAGAAMAAAAAAAMAAAAHAAMAAAAAAAMAAAAIAAMAAAAAAAMAAAAJAAMAAAABAAIAAAALAAMAAAAAAAMAAAAMAAMAAAAAAAMAAAAEAAMAAAAAAAMAAAANAAMAAAAAAAMAAAAOAAMAAAAEAAIAAAAPAAMAAAAEAAIAAAAQAAMAAAAEAAIAAAARAAMAAAABAAIAAAASAAMAAAABAAIAAAATAAMAAAABAAIAAAAUAAMAAAABAAIAAAAUAAQAAAABAAMAAAAUAAUAAAAEAAIAAAAUAAYAAAABAAMAAAAUAAcAAAABAAMAAAAUAAgAAAABAAMAAAASAAgAAAABAAMAAAASAAYAAAABAAMAAAASAAUAAAABAAMAAAARAAUAAAACAAMAAAAPAAUAAAACAAMAAAAOAAUAAAAEAAMAAAANAAUAAAAEAAMAAAANAAYAAAAEAAMAAAANAAcAAAAEAAMAAAANAAgAAAAEAAMAAAASAAkAAAAAAAIAAAAOAAgAAAAAAAMAAAAPAAgAAAACAAMAAAAQAAgAAAAAAAMAAAAHAAYAAAAAAAMAAAAHAAcAAAAAAAMAAAAHAAgAAAAAAAMAAAADAAUAAAAAAAMAAAADAAYAAAABAAMAAAADAAgAAAABAAMAAAADAAMAAAABAAMAAAACAAMAAAABAAMAAAAGAAgAAAACAAMAAAAFAAgAAAACAAMAAAAEAAgAAAAEAAMAAAAMAAUAAAABAAQAAAAJAAcAAAABAAQAAAAGAAcAAAABAAQAAAACAAQAAAAAAAQAAAABAAYAAAAAAAQAAAAKAAYAAAADAAMAAAAOAAkAAAADAAMAAAAVAAUAAAACAAIAAAAWAAIAAAAFAAIAAAANAAIAAAAFAAIAAAAEAAIAAAAFAAIAAAAKAAEAAAADAAIAAAAMAAcAAAADAAIAAAAQAAkAAAADAAIAAAATAAkAAAADAAIAAAASAAQAAAAFAAIAAAA=")
+tile_set = ExtResource("2_4hn1m")
+
+[node name="RestingBayTerminal" parent="." unique_id=2094364497 node_paths=PackedStringArray("valid_event") instance=ExtResource("3_arids")]
+position = Vector2(112, 32)
+component_checkers = Array[ExtResource("4_4hn1m")]([SubResource("Resource_y6dbm"), SubResource("Resource_7leuc"), SubResource("Resource_546pj"), SubResource("Resource_el1q1")])
+valid_event = NodePath("TerminalDialogue")
+state = 5
+terminal_name = "resting_bay_terminal"
+terminal_show_name = "Resting Bay Terminal"
+
+[node name="TerminalDialogue" type="Node2D" parent="RestingBayTerminal" unique_id=1072784060 node_paths=PackedStringArray("next_events")]
+script = ExtResource("6_1mqq2")
+one_time = false
+character_name = "Main Terminal"
+dialogue = "Components Stable."
+next_events = [NodePath("CheckHolder")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="CheckHolder" type="Node2D" parent="RestingBayTerminal/TerminalDialogue" unique_id=1709848218 node_paths=PackedStringArray("holders", "next_events")]
+script = ExtResource("6_1mqq2")
+type = 10
+holders = [NodePath("../../../OutGateRestingBayMemory")]
+next_events = [NodePath("Event"), NodePath("TerminalDialogue[Debug]")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="Event" type="Node2D" parent="RestingBayTerminal/TerminalDialogue/CheckHolder" unique_id=1100288855]
+script = ExtResource("6_1mqq2")
+type = 0
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="TerminalDialogue[Debug]" type="Node2D" parent="RestingBayTerminal/TerminalDialogue/CheckHolder" unique_id=1966382734 node_paths=PackedStringArray("next_events")]
+script = ExtResource("6_1mqq2")
+character_name = "Main Terminal"
+dialogue = "Opened Gate to next room."
+next_events = [NodePath("TurnOnGate")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="TurnOnGate" type="Node2D" parent="RestingBayTerminal/TerminalDialogue/CheckHolder/TerminalDialogue[Debug]" unique_id=1277021945 node_paths=PackedStringArray("target")]
+script = ExtResource("6_1mqq2")
+type = 8
+target = NodePath("../../../../../OutGateRestingBayMemory/OutGateRestingBayHolder")
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="Terminal" parent="." unique_id=1690925441 node_paths=PackedStringArray("valid_event") instance=ExtResource("3_arids")]
+position = Vector2(256, 32)
+component_checkers = Array[ExtResource("4_4hn1m")]([SubResource("Resource_arids")])
+valid_event = NodePath("TerminalDialogue")
+state = 5
+terminal_show_name = "Main Terminal"
+
+[node name="TerminalDialogue" type="Node2D" parent="Terminal" unique_id=344822252 node_paths=PackedStringArray("next_events")]
+script = ExtResource("6_1mqq2")
+one_time = false
+character_name = "Main Terminal"
+dialogue = "Components Stable."
+next_events = [NodePath("CheckHolder")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="CheckHolder" type="Node2D" parent="Terminal/TerminalDialogue" unique_id=413200181 node_paths=PackedStringArray("holders", "next_events")]
+script = ExtResource("6_1mqq2")
+type = 10
+holders = [NodePath("../../../OutGateNextMemory")]
+next_events = [NodePath("Event"), NodePath("TerminalDialogue[Debug]")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="Event" type="Node2D" parent="Terminal/TerminalDialogue/CheckHolder" unique_id=1491010735]
+script = ExtResource("6_1mqq2")
+type = 0
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="TerminalDialogue[Debug]" type="Node2D" parent="Terminal/TerminalDialogue/CheckHolder" unique_id=1002447238 node_paths=PackedStringArray("next_events")]
+script = ExtResource("6_1mqq2")
+character_name = "Main Terminal"
+dialogue = "Opened Gate to next room."
+next_events = [NodePath("TurnOnGate")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="TurnOnGate" type="Node2D" parent="Terminal/TerminalDialogue/CheckHolder/TerminalDialogue[Debug]" unique_id=1334653098 node_paths=PackedStringArray("target")]
+script = ExtResource("6_1mqq2")
+type = 8
+target = NodePath("../../../../../OutGateNextMemory/OutGateNextHolder")
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="Spawners" type="Node2D" parent="." unique_id=489264555]
+y_sort_enabled = true
+
+[node name="CoolerUnit030" parent="Spawners" unique_id=607983904 node_paths=PackedStringArray("terminal") instance=ExtResource("5_arids")]
+position = Vector2(160, 144)
+in_world_name = "Cooler Unit 030"
+dialogue_index = 10
+is_spawner = true
+randomize_name = true
+is_spawner_for_terminal = true
+terminal = NodePath("../../Terminal")
+direction = 1
+
+[node name="MemoryUnit001" parent="Spawners" unique_id=231639961 instance=ExtResource("5_arids")]
+position = Vector2(272, 112)
+in_world_name = "Memory Unit 001"
+appearance = 2
+dialogue_index = 10
+is_spawner = true
+randomize_name = true
+is_spawner_for_terminal = false
+direction = 1
+
+[node name="PowerUnit029" parent="Spawners" unique_id=1771755194 instance=ExtResource("5_arids")]
+position = Vector2(72, 128)
+in_world_name = "Power Unit 029"
+appearance = 3
+dialogue_index = 10
+is_spawner = true
+randomize_name = true
+is_spawner_for_terminal = false
+direction = 1
+
+[node name="SpawnedCharacters" type="Node2D" parent="." unique_id=982796090]
+y_sort_enabled = true
+
+[node name="InGateLast" type="Node2D" parent="." unique_id=2020993809]
+position = Vector2(336, 168)
+script = ExtResource("7_546pj")
+metadata/_custom_type_script = "uid://b6gsepvcc0r2f"
+
+[node name="OutGateLast" type="Area2D" parent="." unique_id=938398765]
+position = Vector2(336, 176)
+script = ExtResource("9_lawgg")
+enter_directions = Array[int]([1])
+map = "UpperCentralBay2"
+gate = 1
+metadata/_custom_type_script = "uid://sserttecf06"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutGateLast" unique_id=1084862290]
+shape = SubResource("RectangleShape2D_x05fi")
+
+[node name="InGateNext" type="Node2D" parent="." unique_id=330024900]
+position = Vector2(304, 34)
+script = ExtResource("7_546pj")
+direction = 1
+metadata/_custom_type_script = "uid://b6gsepvcc0r2f"
+
+[node name="OutGateNext" type="Area2D" parent="." unique_id=603433285]
+position = Vector2(304, 24)
+script = ExtResource("9_lawgg")
+map = "UpperCentralBay4"
+is_disabled = true
+metadata/_custom_type_script = "uid://sserttecf06"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutGateNext" unique_id=1296415700]
+shape = SubResource("RectangleShape2D_btd3o")
+
+[node name="InGateRestingBay" type="Node2D" parent="." unique_id=45233929]
+position = Vector2(64, 34)
+script = ExtResource("7_546pj")
+direction = 1
+metadata/_custom_type_script = "uid://b6gsepvcc0r2f"
+
+[node name="OutGateRestingBay" type="Area2D" parent="." unique_id=591542715]
+position = Vector2(64, 24)
+script = ExtResource("9_lawgg")
+map = "MainHub"
+is_disabled = true
+metadata/_custom_type_script = "uid://sserttecf06"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutGateRestingBay" unique_id=1093937321]
+shape = SubResource("RectangleShape2D_og8q6")
+
+[node name="OutGateNextMemory" type="Node2D" parent="." unique_id=1721558404 node_paths=PackedStringArray("terminal", "target")]
+script = ExtResource("10_3vuvi")
+terminal = NodePath("../Terminal")
+target = NodePath("OutGateNextHolder")
+metadata/_custom_type_script = "uid://dnkw46hjtnxkw"
+
+[node name="OutGateNextHolder" type="Node2D" parent="OutGateNextMemory" unique_id=2086276479 node_paths=PackedStringArray("gate")]
+script = ExtResource("11_nrqmg")
+gate = NodePath("../../OutGateNext")
+metadata/_custom_type_script = "uid://crxfutc2dv8jr"
+
+[node name="OutGateRestingBayMemory" type="Node2D" parent="." unique_id=468261915 node_paths=PackedStringArray("terminal", "target")]
+script = ExtResource("10_3vuvi")
+terminal = NodePath("../RestingBayTerminal")
+target = NodePath("OutGateRestingBayHolder")
+metadata/_custom_type_script = "uid://dnkw46hjtnxkw"
+
+[node name="OutGateRestingBayHolder" type="Node2D" parent="OutGateRestingBayMemory" unique_id=236481662 node_paths=PackedStringArray("gate")]
+script = ExtResource("11_nrqmg")
+gate = NodePath("../../OutGateRestingBay")
+metadata/_custom_type_script = "uid://crxfutc2dv8jr"

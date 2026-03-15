@@ -14,6 +14,7 @@ enum Type {
 	OPEN_DATABASE = 7,
 	TURN_ON_HOLDER = 8,
 	TURN_OFF_HOLDER = 9,
+	HOLDER_CHOICE = 10,
 	NONE = 0
 }
 
@@ -36,7 +37,8 @@ var type_map: Dictionary[Type, Callable] = {
 	Type.CHANGE_TERMINAL_STATE: handle_terminal_state_change,
 	Type.OPEN_DATABASE: handle_open_database,
 	Type.TURN_ON_HOLDER: handle_turn_holder_on,
-	Type.TURN_OFF_HOLDER: handle_turn_holder_off
+	Type.TURN_OFF_HOLDER: handle_turn_holder_off,
+	Type.HOLDER_CHOICE: handle_holder_choice
 }
 
 @export
@@ -68,6 +70,9 @@ var state: TerminalCharacter.TerminalState = TerminalCharacter.TerminalState.SHU
 
 @export
 var duration := 0.3
+
+@export
+var holders: Array[Holder] = []
 
 @export
 var target: Node:
@@ -160,6 +165,11 @@ var property_validator := PropertyValidator.new().add(
 	PropertyValidator.ValidatorPart.new(
 		func(name: String): return name == "terminal",
 		func(): return save_status
+	)
+).add(
+	PropertyValidator.ValidatorPart.new(
+		func(name: String): return name == "holders",
+		func(): return type == Type.HOLDER_CHOICE
 	)
 )
 
@@ -297,3 +307,9 @@ func handle_turn_holder_off() -> int:
 	if holder == null: return RUN_ALL
 	holder.turn_off()
 	return RUN_ALL
+
+func handle_holder_choice() -> int:
+	for holder_index in range(len(holders)):
+		var holder := holders[holder_index]
+		if holder.is_on(): return holder_index
+	return len(holders)

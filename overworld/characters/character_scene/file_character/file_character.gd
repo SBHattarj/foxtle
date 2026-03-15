@@ -21,7 +21,39 @@ var dialogue_index := 0
 @export
 var dialogues: Array[FileCharacterDialogueHolder] = []
 @export
-var is_spawner := false
+var is_spawner := false:
+	set(val):
+		is_spawner = val
+		notify_property_list_changed()
+@export
+var randomize_name := true
+@export
+var is_spawner_for_terminal := false:
+	set(val):
+		is_spawner_for_terminal = val
+		notify_property_list_changed()
+@export
+var terminal: TerminalCharacter
+
+var property_validator := PropertyValidator.new().add(
+	PropertyValidator.ValidatorPart.new(
+		func(name): return name == "is_spawner_for_terminal",
+		func(): return is_spawner
+	)
+).add(
+	PropertyValidator.ValidatorPart.new(
+		func(name): return name == "terminal",
+		func(): return is_spawner_for_terminal
+	)
+).add(
+	PropertyValidator.ValidatorPart.new(
+		func(name): return name == "randomize_name",
+		func(): return is_spawner
+	)
+)
+
+func _validate_property(property: Dictionary) -> void:
+	property_validator.validate(property)
 
 const APPEARANCE_OFFSET := 4
 const APPEARANCE_SIZE := 1
@@ -102,16 +134,41 @@ func _enter_tree() -> void:
 	_spawn()
 	delete_self.call_deferred()
 
-func _spawn():
-	if not Core.map_first_load:
-		delete_self.call_deferred()
+func assign_valid_name():
+	name = RandomUtils.random_string()
+	fix_name_collison()
+
+func fix_name_collison():
+	if is_spawner_for_terminal:
+		while terminal.terminal_file_exists(name):
+			name += RandomUtils.random_string()
 		return
+	while Core.file_exists_in_current_map(name):
+		name += RandomUtils.random_string()
+	
+
+func _spawn():
+	if is_spawner_for_terminal:
+		return _terminal_spawn()
+	if not Core.map_first_load:
+		return
+	if randomize_name:
+		assign_valid_name()
 	Core.load_file_character(name)
 	_save()
+
+func _terminal_spawn():
+	if not terminal.is_log_first_load():
+		return
+	if randomize_name:
+		assign_valid_name()
+	terminal.save_terminal_file(name, 0, binary_converter.to_bytes())
+	terminal.unload_terminal_file(name)
 
 var event_block_handler := Signals.make_event_block_handler()
 
 func _ready() -> void:
+	if is_spawner: return
 	interacted_by.connect(_handle_interact)
 	event_block_handler.full_unblock.connect(_save)
 	set_sprite_frames()

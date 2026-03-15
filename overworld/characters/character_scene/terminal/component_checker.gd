@@ -63,6 +63,7 @@ func extract_valid_file(terminal_name: String, files: PackedStringArray) -> File
 	for file_name in files:
 		var file := Core.get_terminal_file(terminal_name, file_name)
 		var valid_fields := ValidFieldsExtractor.new(file)
+		Core.unload_terminal_file(terminal_name, file_name)
 		if valid_fields.appearance != appearance: continue
 		if valid_fields.in_world_name != character_name: continue
 		if not is_file_name_correct(file_name):

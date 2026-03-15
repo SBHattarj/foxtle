@@ -30,6 +30,14 @@ func load_map(name: String):
 func get_terminal_file(terminal_name: String, name: String) -> FS.LoadSaveFileReturn:
 	return fs.get_terminal_file(terminal_name, name)
 
+func file_exists_in_current_map(path: String) -> bool:
+	return fs.file_exists_in_current_map(path)
+func terminal_file_exists(terminal_name: String, name: String) -> bool:
+	return fs.terminal_file_exists(terminal_name, name)
+
+func unload_terminal_file(terminal_name: String, name: String):
+	return fs.unload_terminal_file(terminal_name, name)
+
 func get_terminal_components(terminal_name: String) -> PackedStringArray:
 	var files := fs.get_terminal_dir(terminal_name).get_files()
 	return files

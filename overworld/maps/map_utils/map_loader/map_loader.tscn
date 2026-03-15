@@ -3,14 +3,22 @@
 [ext_resource type="Script" uid="uid://dhobf0ppcwm8q" path="res://overworld/maps/map_utils/map_loader/map_loader.gd" id="1_8mjdx"]
 [ext_resource type="PackedScene" uid="uid://bsq2c6ms5dvk8" path="res://overworld/maps/map_scenes/main_hub/main_hub.tscn" id="2_2mmi0"]
 [ext_resource type="PackedScene" uid="uid://3vlgb1dguhjs" path="res://overworld/characters/character_scene/player/player.tscn" id="2_1027e"]
-[ext_resource type="PackedScene" uid="uid://b58rv4kxtgmc7" path="res://overworld/maps/map_scenes/room_1_to_oxygen_bay/room_1_to_oxygen_bay.tscn" id="3_2mmi0"]
+[ext_resource type="PackedScene" uid="uid://b58rv4kxtgmc7" path="res://overworld/maps/map_scenes/upper_central_bay1/upper_central_bay1.tscn" id="3_2mmi0"]
+[ext_resource type="PackedScene" uid="uid://bbqc5x68uiuxx" path="res://overworld/maps/map_scenes/upper_central_bay2/upper_central_bay2.tscn" id="4_cnt4u"]
+[ext_resource type="PackedScene" uid="uid://bkgfcyxacejtf" path="res://overworld/maps/map_scenes/upper_central_bay3/upper_central_bay_3.tscn" id="5_w61hg"]
+[ext_resource type="PackedScene" uid="uid://t7plipvmcr5t" path="res://overworld/maps/map_scenes/upper_central_bay4/upper_central_bay4.tscn" id="6_lysq2"]
+[ext_resource type="PackedScene" uid="uid://cvs26btclqvue" path="res://overworld/maps/map_scenes/upper_central_bay5/upper_central_bay5.tscn" id="7_d3toq"]
 
 [node name="MapLoader" type="Node2D" unique_id=858919211 node_paths=PackedStringArray("player")]
 y_sort_enabled = true
 script = ExtResource("1_8mjdx")
 maps = Dictionary[String, PackedScene]({
 "MainHub": ExtResource("2_2mmi0"),
-"Room1ToOxygenBay": ExtResource("3_2mmi0")
+"UperCentralBay3": ExtResource("5_w61hg"),
+"UpperCentralBay1": ExtResource("3_2mmi0"),
+"UpperCentralBay2": ExtResource("4_cnt4u"),
+"UpperCentralBay4": ExtResource("6_lysq2"),
+"UpperCentralBay5": ExtResource("7_d3toq")
 })
 default_map = "MainHub"
 player = NodePath("Player")

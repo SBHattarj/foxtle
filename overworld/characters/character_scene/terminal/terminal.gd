@@ -98,6 +98,19 @@ func save_log(id: int, data: PackedByteArray):
 	var file := Core.get_terminal_file(terminal_name, "log")
 	file.set_buffer(location, data)
 
+func terminal_file_exists(name: String) -> bool:
+	return Core.terminal_file_exists(terminal_name, name)
+
+func get_terminal_file(name: String) -> FS.LoadSaveFileReturn:
+	return Core.get_terminal_file(terminal_name, name)
+
+func save_terminal_file(name: String, location: int, data: PackedByteArray):
+	var file := Core.get_terminal_file(terminal_name, name)
+	file.set_buffer(location, data)
+
+func unload_terminal_file(name: String):
+	Core.unload_terminal_file(terminal_name, name)
+
 func get_log(id: int, size: int) -> PackedByteArray:
 	var location := get_id_location(id, size)
 	var file := Core.get_terminal_file(terminal_name, "log")
@@ -115,7 +128,7 @@ func are_component_valid():
 		if not result.verified: return false
 		if not result.file_name_match: return false
 		components.erase(result.original_file_name)
-	return true
+	return len(components) == 0
 
 func _handle_interacted_by(by: CharacterBase):
 	if by is not Player: return
@@ -131,7 +144,9 @@ func _report_components():
 	if are_component_valid():
 		await Signals.do_dialogue(terminal_show_name, "components valid starting fully.")
 		return
+	var last_state := state
 	await Signals.do_dialogue(terminal_show_name, "components invalid, reporting status.")
+	state = TerminalState.PROCESSING
 	var components := Core.get_terminal_components(terminal_name)
 	components.erase("log")
 	for component_checker in component_checkers:
@@ -163,6 +178,7 @@ func _report_components():
 		)
 		components.erase(result.original_file_name)
 	if len(components) < 1:
+		state = last_state
 		await run_event(event_after_report, true)
 		return
 	await Signals.do_dialogue(
@@ -172,6 +188,7 @@ func _report_components():
 			", ".join(components)
 		]
 	)
+	state = last_state
 	await run_event(event_after_report, true)
 
 func run_event(event: Event, blocked: bool):

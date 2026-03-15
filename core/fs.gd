@@ -152,6 +152,12 @@ func load_terminal(name: String) -> bool:
 		return true
 	return false
 
+func file_exists_in_current_map(path: String) -> bool:
+	return current_map_directory.file_exists(path)
+
+func terminal_file_exists(terminal_name: String, name: String) -> bool:
+	return file_exists_in_current_map(terminal_name.path_join(name))
+
 func get_terminal_file(terminal_name: String, name: String):
 	load_terminal(terminal_name)
 	var file := load_save_file(
@@ -163,6 +169,9 @@ func get_terminal_file(terminal_name: String, name: String):
 		"%s-%s" % [terminal_name, name]
 	)
 	return file
+
+func unload_terminal_file(terminal_name: String, name: String):
+	unload_save_file("%s-%s" % [terminal_name, name])
 
 func get_map_dir_name():
 	return current_map_directory.get_current_dir().get_file()

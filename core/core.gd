@@ -63,3 +63,12 @@ func unload_file_character(name: String):
 
 func os_open_map_dir():
 	OS.shell_open(Core.fs.current_map_directory.get_current_dir())
+
+func get_map_name() -> String:
+	return fs.get_map_dir_name()
+
+func get_volume(bus: String) -> float:
+	return AudioServer.get_bus_volume_linear(AudioServer.get_bus_index(bus))
+
+func set_volume(bus: String, volume: float):
+	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(bus), volume)

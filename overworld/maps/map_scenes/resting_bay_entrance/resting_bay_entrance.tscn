@@ -1,0 +1,123 @@
+[gd_scene format=4 uid="uid://bll1qkcdfty8q"]
+
+[ext_resource type="TileSet" uid="uid://0iil885swtwj" path="res://overworld/tilemaps/spaceshipt_insed.tres" id="1_xwr06"]
+[ext_resource type="PackedScene" uid="uid://5j2yq0qbq7g2" path="res://overworld/characters/character_scene/terminal/terminal.tscn" id="2_njgaf"]
+[ext_resource type="Script" uid="uid://cuv5e0e7mitp6" path="res://overworld/maps/map.gd" id="2_rpdgh"]
+[ext_resource type="Script" uid="uid://20okh1dlqyfj" path="res://overworld/events/event.gd" id="3_njgaf"]
+[ext_resource type="AudioStream" uid="uid://3opxdo44b3mb" path="res://sounds/ArewSounds.wav" id="5_0apxx"]
+[ext_resource type="Script" uid="uid://b6gsepvcc0r2f" path="res://overworld/maps/in_gate.gd" id="5_8yx34"]
+[ext_resource type="Script" uid="uid://sserttecf06" path="res://overworld/maps/map_utils/out_gate/out_gate.gd" id="6_0apxx"]
+[ext_resource type="TileSet" uid="uid://dl4g2wij35upi" path="res://overworld/tilemaps/spaceship_inside_broken_parts.tres" id="7_sll56"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqu53"]
+size = Vector2(32, 16)
+
+[node name="RestingBayEntrance" type="TileMapLayer" unique_id=1367937279 node_paths=PackedStringArray("in_gates", "file_character_spawn_location")]
+tile_map_data = PackedByteArray("AAAQAAsAAAAFAAcAAAAQAAoAAAAFAAQAAAAQAAkAAAAFAAMAAAAQAAgAAAAFAAMAAAAQAAcAAAAFAAYAAAAQAAYAAAAFAAYAAAAQAAUAAAAFAAUAAAAQAAQAAAAFAAYAAAAQAAMAAAAFAAQAAAAQAAIAAAAFAAMAAAAQAAEAAAAFAAYAAAAQAAAAAAAFAAIAAAAPAAsAAAADAAcAAAAPAAoAAAACAAMAAAAPAAkAAAABAAQAAAAPAAgAAAABAAUAAAAPAAcAAAAEAAMAAAAPAAYAAAAEAAQAAAAPAAUAAAADAAQAAAAPAAQAAAAEAAMAAAAPAAMAAAABAAQAAAAPAAIAAAABAAYAAAAPAAEAAAAEAAUAAAAPAAAAAAABAAIAAAAOAAsAAAAEAAcAAAAOAAoAAAABAAYAAAAOAAkAAAAEAAUAAAAOAAgAAAADAAYAAAAOAAcAAAAEAAYAAAAOAAYAAAAEAAYAAAAOAAUAAAACAAUAAAAOAAQAAAACAAUAAAAOAAMAAAADAAMAAAAOAAIAAAADAAUAAAAOAAEAAAACAAMAAAAOAAAAAAAEAAIAAAANAAsAAAADAAcAAAANAAoAAAACAAYAAAANAAkAAAAEAAUAAAANAAgAAAABAAUAAAANAAcAAAADAAYAAAANAAYAAAAEAAUAAAANAAUAAAAEAAQAAAANAAQAAAAEAAYAAAANAAMAAAABAAYAAAANAAIAAAABAAMAAAANAAEAAAADAAQAAAANAAAAAAABAAIAAAAMAAsAAAAEAAcAAAAMAAoAAAADAAMAAAAMAAkAAAAEAAUAAAAMAAgAAAACAAYAAAAMAAcAAAABAAQAAAAMAAYAAAACAAUAAAAMAAUAAAAEAAYAAAAMAAQAAAABAAQAAAAMAAMAAAACAAYAAAAMAAIAAAACAAQAAAAMAAEAAAADAAMAAAAMAAAAAAABAAIAAAALAAsAAAADAAcAAAALAAoAAAABAAMAAAALAAkAAAACAAYAAAALAAgAAAABAAQAAAALAAcAAAABAAQAAAALAAYAAAACAAUAAAALAAUAAAAEAAYAAAALAAQAAAABAAQAAAALAAMAAAAEAAYAAAALAAIAAAABAAQAAAALAAEAAAABAAUAAAALAAAAAAAEAAIAAAAKAAsAAAADAAQAAAAKAAoAAAADAAYAAAAKAAkAAAAEAAYAAAAKAAgAAAABAAYAAAAKAAcAAAACAAUAAAAKAAYAAAABAAMAAAAKAAUAAAAEAAQAAAAKAAQAAAABAAMAAAAKAAMAAAABAAMAAAAKAAIAAAACAAQAAAAKAAEAAAAEAAUAAAAKAAAAAAAHAAIAAAAJAAsAAAACAAQAAAAJAAoAAAACAAUAAAAJAAkAAAAEAAYAAAAJAAgAAAABAAUAAAAJAAcAAAACAAQAAAAJAAYAAAADAAQAAAAJAAUAAAAEAAMAAAAJAAQAAAACAAQAAAAJAAMAAAAEAAYAAAAJAAIAAAADAAMAAAAJAAEAAAADAAYAAAAJAAAAAAAGAAIAAAAIAAsAAAACAAcAAAAIAAoAAAABAAYAAAAIAAkAAAACAAYAAAAIAAgAAAACAAUAAAAIAAcAAAAEAAYAAAAIAAYAAAABAAUAAAAIAAUAAAABAAMAAAAIAAQAAAACAAQAAAAIAAMAAAABAAYAAAAIAAIAAAABAAUAAAAIAAEAAAABAAMAAAAIAAAAAAACAAIAAAAHAAsAAAADAAcAAAAHAAoAAAAEAAUAAAAHAAkAAAADAAQAAAAHAAgAAAACAAQAAAAHAAcAAAADAAYAAAAHAAYAAAADAAUAAAAHAAUAAAAEAAMAAAAHAAQAAAAEAAYAAAAHAAMAAAADAAUAAAAHAAIAAAABAAMAAAAHAAEAAAAEAAQAAAAHAAAAAAADAAIAAAAGAAsAAAABAAcAAAAGAAoAAAADAAYAAAAGAAkAAAABAAYAAAAGAAgAAAADAAMAAAAGAAcAAAAEAAUAAAAGAAYAAAACAAMAAAAGAAUAAAAEAAYAAAAGAAQAAAAEAAMAAAAGAAMAAAACAAQAAAAGAAIAAAADAAMAAAAGAAEAAAAEAAQAAAAGAAAAAAACAAIAAAAFAAsAAAACAAcAAAAFAAoAAAACAAYAAAAFAAkAAAAEAAUAAAAFAAgAAAACAAMAAAAFAAcAAAACAAMAAAAFAAYAAAABAAYAAAAFAAUAAAABAAYAAAAFAAQAAAAEAAMAAAAFAAMAAAACAAYAAAAFAAIAAAADAAYAAAAFAAEAAAACAAUAAAAFAAAAAAABAAIAAAAEAAsAAAABAAcAAAAEAAoAAAAEAAMAAAAEAAkAAAACAAMAAAAEAAgAAAAEAAMAAAAEAAcAAAADAAMAAAAEAAYAAAAEAAUAAAAEAAUAAAACAAYAAAAEAAQAAAAEAAYAAAAEAAMAAAABAAYAAAAEAAIAAAABAAQAAAAEAAEAAAAEAAQAAAAEAAAAAAADAAIAAAADAAsAAAAEAAcAAAADAAoAAAADAAMAAAADAAkAAAACAAUAAAADAAgAAAACAAQAAAADAAcAAAADAAUAAAADAAYAAAACAAQAAAADAAUAAAADAAMAAAADAAQAAAACAAQAAAADAAMAAAADAAMAAAADAAIAAAACAAMAAAADAAEAAAAEAAQAAAADAAAAAAADAAIAAAACAAsAAAADAAcAAAACAAoAAAABAAYAAAACAAkAAAABAAUAAAACAAgAAAABAAQAAAACAAcAAAAEAAUAAAACAAYAAAABAAQAAAACAAUAAAADAAUAAAACAAQAAAAEAAYAAAACAAMAAAACAAUAAAACAAIAAAAEAAQAAAACAAEAAAACAAMAAAACAAAAAAADAAIAAAABAAsAAAAAAAcAAAABAAoAAAAAAAYAAAABAAkAAAAAAAMAAAABAAgAAAAAAAUAAAABAAcAAAAAAAQAAAABAAYAAAAAAAMAAAABAAUAAAAAAAYAAAABAAQAAAAAAAQAAAABAAMAAAAAAAQAAAABAAIAAAAAAAMAAAABAAEAAAAAAAQAAAABAAAAAAAAAAIAAAAQAP//AAAFAAEAAAAQAP7/AAAFAAEAAAAQAP3/AAAFAAEAAAAQAPz/AAAFAAEAAAAQAPv/AAAFAAAAAAAPAP//AAABAAEAAAAPAP7/AAACAAEAAAAPAP3/AAAEAAEAAAAPAPz/AAADAAEAAAAPAPv/AAACAAAAAAAOAP//AAACAAEAAAAOAP7/AAABAAEAAAAOAP3/AAACAAEAAAAOAPz/AAACAAEAAAAOAPv/AAADAAAAAAANAP//AAAEAAEAAAANAP7/AAADAAEAAAANAP3/AAAEAAEAAAANAPz/AAABAAEAAAANAPv/AAACAAAAAAAMAP//AAADAAEAAAAMAP7/AAADAAEAAAAMAP3/AAACAAEAAAAMAPz/AAACAAEAAAAMAPv/AAAEAAAAAAALAP//AAADAAEAAAALAP7/AAAEAAEAAAALAP3/AAADAAEAAAALAPz/AAAEAAEAAAALAPv/AAAEAAAAAAAKAP//AAAHAAEAAAAKAP7/AAAHAAAAAAAKAP3/AAABAAEAAAAKAPz/AAADAAEAAAAKAPv/AAAEAAAAAAAJAP//AAAGAAEAAAAJAP7/AAAGAAAAAAAJAP3/AAACAAEAAAAJAPz/AAADAAEAAAAJAPv/AAACAAAAAAAIAP//AAADAAEAAAAIAP7/AAABAAEAAAAIAP3/AAACAAEAAAAIAPz/AAACAAEAAAAIAPv/AAACAAAAAAAHAP//AAAEAAEAAAAHAP7/AAAEAAEAAAAHAP3/AAADAAEAAAAHAPz/AAACAAEAAAAHAPv/AAABAAAAAAAGAP//AAAEAAEAAAAGAP7/AAAEAAEAAAAGAP3/AAAEAAEAAAAGAPz/AAAEAAEAAAAGAPv/AAADAAAAAAAFAP//AAABAAEAAAAFAP7/AAACAAEAAAAFAP3/AAADAAEAAAAFAPz/AAACAAEAAAAFAPv/AAADAAAAAAAEAP//AAABAAEAAAAEAP7/AAABAAEAAAAEAP3/AAAEAAEAAAAEAPz/AAAEAAEAAAAEAPv/AAADAAAAAAADAP//AAADAAEAAAADAP7/AAABAAEAAAADAP3/AAAEAAEAAAADAPz/AAACAAEAAAADAPv/AAACAAAAAAACAP//AAAEAAEAAAACAP7/AAAEAAEAAAACAP3/AAAEAAEAAAACAPz/AAABAAEAAAACAPv/AAAEAAAAAAABAP//AAAAAAEAAAABAP7/AAAAAAEAAAABAP3/AAAAAAEAAAABAPz/AAAAAAEAAAABAPv/AAAAAAAAAAAJAAwAAAAGAAMAAAAKAAwAAAAGAAMAAAA=")
+tile_set = ExtResource("1_xwr06")
+script = ExtResource("2_rpdgh")
+in_gates = [NodePath("InGate")]
+file_character_spawn_location = NodePath("Node2D")
+
+[node name="Terminal" parent="." unique_id=2094364497 node_paths=PackedStringArray("report_override_event") instance=ExtResource("2_njgaf")]
+position = Vector2(208, 16)
+report_override_event = NodePath("Event")
+terminal_show_name = "Main Terminal"
+
+[node name="Event" type="Node2D" parent="Terminal" unique_id=712015465]
+script = ExtResource("3_njgaf")
+character_name = "[color={protag_color}]{protag_name}[/color]"
+dialogue = "[color={protag_color}]This one is broken and can't be fixed.[/color]"
+audio = ExtResource("5_0apxx")
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="TerminalLogger" parent="." unique_id=460648089 node_paths=PackedStringArray("report_override_event") instance=ExtResource("2_njgaf")]
+position = Vector2(64, 16)
+report_override_event = NodePath("Event")
+state = 4
+terminal_name = "logger_terminal"
+terminal_show_name = "Logger Terminal"
+
+[node name="Event" type="Node2D" parent="TerminalLogger" unique_id=1063662884 node_paths=PackedStringArray("next_events")]
+script = ExtResource("3_njgaf")
+character_name = "Logger Terminal"
+dialogue = "Log 001:"
+next_events = [NodePath("Event")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="Event" type="Node2D" parent="TerminalLogger/Event" unique_id=363842904 node_paths=PackedStringArray("next_events")]
+script = ExtResource("3_njgaf")
+character_name = "Logger Terminal"
+dialogue = "This ship is sheduled to be retired not even a month from now. Everyone is sad, since we had practically grew up with it."
+next_events = [NodePath("Event")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="Event" type="Node2D" parent="TerminalLogger/Event/Event" unique_id=1375732282 node_paths=PackedStringArray("next_events")]
+script = ExtResource("3_njgaf")
+character_name = "Logger Terminal"
+dialogue = "But its systems are slowly starting fail, it can become dangerouse to force it to continue to work."
+next_events = [NodePath("Event")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="Event" type="Node2D" parent="TerminalLogger/Event/Event/Event" unique_id=1825461729 node_paths=PackedStringArray("next_events")]
+script = ExtResource("3_njgaf")
+character_name = "Logger Terminal"
+dialogue = "Curiously, the ship won't be demolished like most others, but would be left in space in the middle of nowhere."
+next_events = [NodePath("Event")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="Event" type="Node2D" parent="TerminalLogger/Event/Event/Event/Event" unique_id=727908333 node_paths=PackedStringArray("next_events")]
+script = ExtResource("3_njgaf")
+character_name = "Logger Terminal"
+dialogue = "Some are making conspiracy theories."
+next_events = [NodePath("Event")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="Event" type="Node2D" parent="TerminalLogger/Event/Event/Event/Event/Event" unique_id=139116603 node_paths=PackedStringArray("next_events")]
+script = ExtResource("3_njgaf")
+character_name = "Logger Terminal"
+dialogue = "Some are speculating, that someone might be made to board this ship before its launched back into the space."
+next_events = [NodePath("Event")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="Event" type="Node2D" parent="TerminalLogger/Event/Event/Event/Event/Event/Event" unique_id=1475923408 node_paths=PackedStringArray("next_events")]
+script = ExtResource("3_njgaf")
+character_name = "Logger Terminal"
+dialogue = "They speculate-"
+next_events = [NodePath("Event"), NodePath("Event2")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="Event" type="Node2D" parent="TerminalLogger/Event/Event/Event/Event/Event/Event/Event" unique_id=342884394 node_paths=PackedStringArray("target")]
+script = ExtResource("3_njgaf")
+type = 6
+target = NodePath("../../../../../../../..")
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="Event2" type="Node2D" parent="TerminalLogger/Event/Event/Event/Event/Event/Event/Event" unique_id=1467582403]
+script = ExtResource("3_njgaf")
+character_name = "[color={protag_color}]{protag_name}[/color]"
+dialogue = "[color={protag_color}]It turned off, and won't turn on again.[/color]"
+audio = ExtResource("5_0apxx")
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1262360507]
+
+[node name="InGate" type="Node2D" parent="." unique_id=1894732461]
+position = Vector2(160, 176)
+script = ExtResource("5_8yx34")
+metadata/_custom_type_script = "uid://b6gsepvcc0r2f"
+
+[node name="OutGate" type="Area2D" parent="." unique_id=480660267]
+position = Vector2(160, 192)
+script = ExtResource("6_0apxx")
+enter_directions = Array[int]([1])
+map = "UpperCentralBay3"
+gate = 2
+metadata/_custom_type_script = "uid://sserttecf06"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutGate" unique_id=2047492409]
+shape = SubResource("RectangleShape2D_tqu53")
+
+[node name="debris" type="TileMapLayer" parent="." unique_id=425051752]
+tile_map_data = PackedByteArray("AAACAAIAAAADAAMAAAAEAAMAAAADAAMAAAAHAAUAAAAFAAIAAAAFAAcAAAAAAAQAAAAMAAMAAAABAAQAAAANAAcAAAADAAIAAAAKAAgAAAAAAAQAAAAHAAkAAAAFAAIAAAAFAAoAAAADAAIAAAACAAgAAAAAAAQAAAADAAcAAAADAAMAAAADAAYAAAADAAIAAAAGAAUAAAADAAMAAAAJAAIAAAACAAIAAAAHAAEAAAADAAMAAAAIAAAAAAABAAQAAAALAAEAAAAAAAQAAAAKAAIAAAADAAIAAAAGAAMAAAAAAAQAAAAFAAIAAAADAAIAAAADAAEAAAACAAIAAAACAAMAAAACAAIAAAAMAAQAAAAFAAIAAAAOAAEAAAAAAAQAAAAOAAcAAAADAAMAAAAMAAgAAAABAAQAAAAJAAkAAAACAAIAAAAMAAkAAAAFAAIAAAAOAAoAAAAAAAQAAAAOAAgAAAAFAAIAAAALAAYAAAAFAAIAAAAHAAYAAAADAAMAAAAFAAkAAAACAAIAAAADAAoAAAAFAAIAAAACAAkAAAABAAQAAAAIAAYAAAAFAAIAAAAKAAYAAAADAAMAAAALAAQAAAADAAIAAAAHAAQAAAADAAIAAAAJAAQAAAABAAQAAAAJAAAAAAACAAMAAAAKAAAAAAABAAMAAAA=")
+tile_set = ExtResource("7_sll56")

@@ -74,7 +74,7 @@ terminal_show_name = "Resting Bay Terminal"
 [node name="TerminalDialogue" type="Node2D" parent="RestingBayTerminal" unique_id=1072784060 node_paths=PackedStringArray("next_events")]
 script = ExtResource("6_1mqq2")
 one_time = false
-character_name = "Main Terminal"
+character_name = "Resting Bay Terminal"
 dialogue = "Components Stable."
 next_events = [NodePath("CheckHolder")]
 metadata/_custom_type_script = "uid://20okh1dlqyfj"
@@ -93,7 +93,7 @@ metadata/_custom_type_script = "uid://20okh1dlqyfj"
 
 [node name="TerminalDialogue[Debug]" type="Node2D" parent="RestingBayTerminal/TerminalDialogue/CheckHolder" unique_id=1966382734 node_paths=PackedStringArray("next_events")]
 script = ExtResource("6_1mqq2")
-character_name = "Main Terminal"
+character_name = "Resting Bay Terminal"
 dialogue = "Opened Gate to next room."
 next_events = [NodePath("TurnOnGate")]
 metadata/_custom_type_script = "uid://20okh1dlqyfj"

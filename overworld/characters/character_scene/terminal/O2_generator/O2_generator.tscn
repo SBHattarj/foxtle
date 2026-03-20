@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://7kccphmn60ux"]
+
+[ext_resource type="PackedScene" uid="uid://5j2yq0qbq7g2" path="res://overworld/characters/character_scene/terminal/terminal.tscn" id="1_43y11"]
+[ext_resource type="Texture2D" uid="uid://c3bavn0y73mij" path="res://kritta_images/O2Generator.png" id="2_xt868"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jltw"]
+size = Vector2(34, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov3eg"]
+atlas = ExtResource("2_xt868")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqv6y"]
+atlas = ExtResource("2_xt868")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_us321"]
+atlas = ExtResource("2_xt868")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6knl"]
+atlas = ExtResource("2_xt868")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aaei2"]
+atlas = ExtResource("2_xt868")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v8rvx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov3eg")
+}],
+"loop": true,
+"name": &"face",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqv6y")
+}],
+"loop": true,
+"name": &"info",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_us321")
+}],
+"loop": true,
+"name": &"processing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6knl")
+}],
+"loop": true,
+"name": &"shut",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aaei2")
+}],
+"loop": true,
+"name": &"warning",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkhad"]
+size = Vector2(16, 16)
+
+[node name="O2Generator" unique_id=2094364497 instance=ExtResource("1_43y11")]
+y_sort_enabled = false
+collision_layer = 5
+terminal_show_name = "Main Terminal"
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=584581368]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_4jltw")
+
+[node name="InteractArea" parent="." index="1" unique_id=1449106686]
+position = Vector2(0, 6)
+
+[node name="AnimatedSprite2D" parent="." index="2" unique_id=546900571]
+position = Vector2(0, 14)
+sprite_frames = SubResource("SpriteFrames_v8rvx")
+frame_progress = 0.3104732
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="3" unique_id=246932212]
+position = Vector2(-18, -3)
+shape = SubResource("RectangleShape2D_pkhad")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." index="4" unique_id=28342568]
+position = Vector2(18, -3)
+shape = SubResource("RectangleShape2D_pkhad")

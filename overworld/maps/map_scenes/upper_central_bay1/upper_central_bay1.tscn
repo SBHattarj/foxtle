@@ -50,6 +50,7 @@ shape = SubResource("RectangleShape2D_byang")
 position = Vector2(128, 116)
 in_world_name = "Cooler Unit 001"
 is_spawner = true
+randomize_name = true
 is_spawner_for_terminal = false
 
 [node name="Characters" type="Node2D" parent="." unique_id=1940941238]

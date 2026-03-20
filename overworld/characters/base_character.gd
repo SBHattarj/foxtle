@@ -5,6 +5,7 @@ class_name CharacterBase
 #region signals
 signal interacted_by(other: CharacterBase)
 signal velocity_changed(character: CharacterBase)
+signal bump
 #endregion
 #region enums
 enum Direction {
@@ -110,9 +111,18 @@ func _handle_horizontal_direction():
 		return
 	direction = Direction.UP
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if is_zero_approx(velocity.length()): return
-	move_and_slide()
+	if move_and_slide():
+		_on_collison()
+
+func _on_collison():
+	for i in range(get_slide_collision_count()):
+		var collison := get_slide_collision(i)
+		if is_zero_approx(collison.get_normal().dot(velocity)):
+			continue
+		bump.emit()
+		return
 
 func get_target() -> CharacterBase:
 	if not interact_area.has_overlapping_bodies(): return null

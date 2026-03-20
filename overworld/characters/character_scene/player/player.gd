@@ -3,9 +3,14 @@ extends CharacterBase
 class_name Player
 
 var event_block_handler := Signals.make_event_block_handler()
+@onready
+var bump_audio: AudioStreamPlayer = $BumpAudio
 
 @onready
 var camera: Camera2D = $Camera2D
+
+@export
+var bump_audio_range: RangeValue = RangeValue.new()
 
 @export
 var current_map: String
@@ -31,6 +36,21 @@ var binary_converter := BinaryConverter.new().add_part(
 		func(val): current_map = val,
 		20
 	)
+).add_part(
+	BinaryConverter.Float.new(
+		Core.get_volume.bind("Master"),
+		func(val): Core.set_volume("Master", val)
+	)
+).add_part(
+	BinaryConverter.Float.new(
+		Core.get_volume.bind("Music"),
+		func(val): Core.set_volume("Music", val)
+	)
+).add_part(
+	BinaryConverter.Float.new(
+		Core.get_volume.bind("SFX"),
+		func(val): Core.set_volume("SFX", val)
+	)
 )
 
 func _ready():
@@ -39,6 +59,13 @@ func _ready():
 	Core.ready_player(self)
 	camera.reset_smoothing()
 	event_block_handler.full_unblock.connect(save)
+	bump.connect(_on_bump)
+
+func _on_bump():
+	if bump_audio.playing:
+		return
+	bump_audio.pitch_scale = randf_range(bump_audio_range.low, bump_audio_range.high)
+	bump_audio.play()
 
 func teleport(position: Vector2, smooth := false):
 	global_position = position

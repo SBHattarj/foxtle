@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://cf0ilqmw4no7e"]
+
+[ext_resource type="Script" uid="uid://c2ttyg82f4aco" path="res://overworld/maps/map_utils/map_transition/map_transition.gd" id="1_q1c2j"]
+[ext_resource type="AudioStream" uid="uid://c221382iuolmq" path="res://sounds/gate_transition.wav" id="2_mgw8i"]
+[ext_resource type="Script" uid="uid://bqkw1vm7bhvep" path="res://utils/resources/range_value.gd" id="2_u0jyv"]
+
+[sub_resource type="Resource" id="Resource_wmojj"]
+script = ExtResource("2_u0jyv")
+low = 1.2
+high = 1.8
+metadata/_custom_type_script = "uid://bqkw1vm7bhvep"
+
+[sub_resource type="Animation" id="Animation_u0jyv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_q1c2j"]
+resource_name = "end"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wmojj"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_mgw8i")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fo6i0"]
+_data = {
+&"RESET": SubResource("Animation_u0jyv"),
+&"end": SubResource("Animation_q1c2j"),
+&"start": SubResource("Animation_wmojj")
+}
+
+[node name="MapTransition" type="CanvasLayer" unique_id=219612908]
+script = ExtResource("1_q1c2j")
+random_pich_scale_range = SubResource("Resource_wmojj")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1073423131]
+modulate = Color(1, 1, 1, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-16, -30, 594, -17, 587, 348, -33, 345)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1832354733]
+pitch_scale = 1.8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1910483654]
+libraries/ = SubResource("AnimationLibrary_fo6i0")

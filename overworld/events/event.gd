@@ -60,6 +60,8 @@ var one_time: bool = true
 var character_name: String
 @export_multiline()
 var dialogue: String
+@export
+var audio: AudioStream = null
 
 
 @export
@@ -129,7 +131,7 @@ var binary_converter := BinaryConverter.new().add_part(
 
 var property_validator := PropertyValidator.new().add(
 	PropertyValidator.ValidatorPart.new(
-		func(name: String): return name in ["character_name", "dialogue"],
+		func(name: String): return name in ["character_name", "dialogue", audio],
 		func(): return type == Type.DIALOGUE
 	)
 ).add(
@@ -171,6 +173,11 @@ var property_validator := PropertyValidator.new().add(
 		func(name: String): return name == "holders",
 		func(): return type == Type.HOLDER_CHOICE
 	)
+).add(
+	PropertyValidator.ValidatorPart.new(
+		func(name: String): return name == "state",
+		func(): return type == Type.CHANGE_TERMINAL_STATE
+	)
 )
 
 func _validate_property(property: Dictionary) -> void:
@@ -180,7 +187,11 @@ func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	_handle_save_load()
 	if start_type == Starter.IMMEDIATE:
-		call_from_event.call_deferred()
+		called_immediate()
+
+func called_immediate():
+	await Signals.map_initialised
+	call_from_event()
 
 func _handle_save_load() -> void:
 	if not save_status: return
@@ -247,7 +258,7 @@ func default_run() -> int:
 	return RUN_ALL
 
 func handle_dialogue() -> int:
-	await Signals.do_dialogue(character_name, dialogue)
+	await Signals.do_dialogue(character_name, dialogue, audio)
 	return RUN_ALL
 
 func handle_turn() -> int:

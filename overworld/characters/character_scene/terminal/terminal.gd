@@ -14,6 +14,8 @@ enum TerminalState {
 @export
 var component_checkers: Array[ComponentChecker] = []
 @export
+var report_override_event: Event
+@export
 var valid_event: Event
 @export
 var event_after_report: Event
@@ -63,6 +65,12 @@ const terminal_state_animation_map := {
 
 var event_block_handler := Signals.make_event_block_handler()
 
+var was_valid := false
+
+func _ready() -> void:
+	was_valid = are_component_valid()
+	_ready_sprite()
+
 func get_current_animation() -> String:
 	return terminal_state_animation_map.get(state, _get_animation_for_validation())
 
@@ -85,6 +93,9 @@ func _enter_tree() -> void:
 	log_binary_converter.from_bytes(file.get_buffer(0, log_binary_converter.length))
 
 func _focus_entered():
+	if not was_valid and are_component_valid():
+		Signals.run_ui_audio("PuzzleSolveJingleAudio")
+	was_valid = are_component_valid()
 	_handle_animation_change()
 
 func save():
@@ -132,6 +143,9 @@ func are_component_valid():
 
 func _handle_interacted_by(by: CharacterBase):
 	if by is not Player: return
+	if report_override_event != null:
+		run_event(report_override_event, false)
+		return
 	if are_component_valid():
 		run_event(valid_event, false)
 		return

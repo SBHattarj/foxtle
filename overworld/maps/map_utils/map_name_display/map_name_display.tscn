@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://bnr3eo0saakvo"]
+
+[ext_resource type="Script" uid="uid://dxg8l6xpltm7q" path="res://overworld/maps/map_utils/map_name_display/map_name_display.gd" id="1_siudm"]
+[ext_resource type="Texture2D" uid="uid://fr45x108ueoq" path="res://ui/ui_panel_texture.tres" id="2_j2nkd"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ngtcu"]
+texture = ExtResource("2_j2nkd")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_5s4cy"]
+Label/constants/outline_size = 4
+Label/styles/normal = SubResource("StyleBoxTexture_ngtcu")
+
+[sub_resource type="Animation" id="Animation_eafry"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_tdhi5"]
+resource_name = "name_display_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.75, 1),
+"transitions": PackedFloat32Array(1, 0.24148414, 1, 4.1410575),
+"update": 0,
+"values": [Vector2(0, -27), Vector2(0, 0), Vector2(0, 0), Vector2(0, -27)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ak71a"]
+_data = {
+&"RESET": SubResource("Animation_eafry"),
+&"name_display_animation": SubResource("Animation_tdhi5")
+}
+
+[node name="MapNameDisplay" type="CanvasLayer" unique_id=977757405]
+script = ExtResource("1_siudm")
+
+[node name="Label" type="Label" parent="." unique_id=957259136]
+visible = false
+offset_right = 40.0
+offset_bottom = 27.0
+accessibility_name = "map name"
+theme = SubResource("Theme_5s4cy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1518149356]
+libraries/ = SubResource("AnimationLibrary_ak71a")

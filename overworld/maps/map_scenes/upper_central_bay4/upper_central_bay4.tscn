@@ -123,7 +123,7 @@ metadata/_custom_type_script = "uid://b6gsepvcc0r2f"
 position = Vector2(48, 208)
 script = ExtResource("8_d2v47")
 enter_directions = Array[int]([1])
-map = "UperCentralBay3"
+map = "UpperCentralBay3"
 gate = 1
 metadata/_custom_type_script = "uid://sserttecf06"
 
@@ -133,6 +133,7 @@ shape = SubResource("RectangleShape2D_on0wi")
 [node name="InGateNext" type="Node2D" parent="." unique_id=1710326832]
 position = Vector2(160, 41)
 script = ExtResource("7_36byc")
+direction = 1
 metadata/_custom_type_script = "uid://b6gsepvcc0r2f"
 
 [node name="OutGateNext" type="Area2D" parent="." unique_id=549333266]

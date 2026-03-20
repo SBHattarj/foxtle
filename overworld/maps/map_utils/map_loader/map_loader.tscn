@@ -8,15 +8,19 @@
 [ext_resource type="PackedScene" uid="uid://bkgfcyxacejtf" path="res://overworld/maps/map_scenes/upper_central_bay3/upper_central_bay_3.tscn" id="5_w61hg"]
 [ext_resource type="PackedScene" uid="uid://t7plipvmcr5t" path="res://overworld/maps/map_scenes/upper_central_bay4/upper_central_bay4.tscn" id="6_lysq2"]
 [ext_resource type="PackedScene" uid="uid://cvs26btclqvue" path="res://overworld/maps/map_scenes/upper_central_bay5/upper_central_bay5.tscn" id="7_d3toq"]
+[ext_resource type="PackedScene" uid="uid://c5885fi6ukqis" path="res://overworld/maps/map_scenes/oxygen_bay/oxygen_bay.tscn" id="8_j87cc"]
+[ext_resource type="PackedScene" uid="uid://bll1qkcdfty8q" path="res://overworld/maps/map_scenes/resting_bay_entrance/resting_bay_entrance.tscn" id="8_ooa1a"]
 
 [node name="MapLoader" type="Node2D" unique_id=858919211 node_paths=PackedStringArray("player")]
 y_sort_enabled = true
 script = ExtResource("1_8mjdx")
 maps = Dictionary[String, PackedScene]({
 "MainHub": ExtResource("2_2mmi0"),
-"UperCentralBay3": ExtResource("5_w61hg"),
+"OxygenBay": ExtResource("8_j87cc"),
+"RestingBayEntrance": ExtResource("8_ooa1a"),
 "UpperCentralBay1": ExtResource("3_2mmi0"),
 "UpperCentralBay2": ExtResource("4_cnt4u"),
+"UpperCentralBay3": ExtResource("5_w61hg"),
 "UpperCentralBay4": ExtResource("6_lysq2"),
 "UpperCentralBay5": ExtResource("7_d3toq")
 })

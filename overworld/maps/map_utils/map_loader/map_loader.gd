@@ -17,7 +17,7 @@ func _ready() -> void:
 	if player.current_map in maps:
 		add_map(player.current_map)
 		return
-	change_map(default_map, 0)
+	change_map(default_map, 0, false)
 
 func add_map(name: String) -> Map:
 	if name not in maps:
@@ -31,12 +31,22 @@ func add_map(name: String) -> Map:
 	map_holder.add_child(map)
 	return map
 
-func change_map(name: String, gate: int):
+func change_map(name: String, gate: int, transition := true):
 	if name not in maps:
 		name = default_map
+	await Signals.call_with_event_block(_change_map.bind(name, gate, transition))
+func _change_map(name: String, gate: int, transition := true):
+	if transition:
+		await Signals.do_map_transition_start()
 	player.teleport(Vector2.ZERO)
 	var map := await add_map(name)
 	player.current_map = name
 	var chosen_gate := map.in_gates[clampi(gate, 0, len(map.in_gates)-1)]
 	player.direction = chosen_gate.direction
 	player.teleport(chosen_gate.global_position)
+	if transition:
+		await Signals.do_map_transition_end()
+	Signals.show_map_name()
+	Signals.event_full_unblock()
+	await get_tree().process_frame
+	Signals.map_initialised_emit()

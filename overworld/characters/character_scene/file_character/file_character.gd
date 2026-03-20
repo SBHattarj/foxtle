@@ -2,6 +2,9 @@
 extends CharacterBase
 class_name FileCharacter
 
+const AREW_SOUNDS: AudioStream = preload("uid://3opxdo44b3mb")
+
+
 @export
 var in_world_name := ""
 @export
@@ -193,9 +196,9 @@ func read_label():
 	await Signals.call_with_event_block(_read_label)
 
 func _read_label():
-	await Signals.do_dialogue("[color={protag_color}]{protag_name}[/color]", "[color={protag_color}]I read its digital label.[/color]")
+	await Signals.do_dialogue("[color={protag_color}]{protag_name}[/color]", "[color={protag_color}]I read its digital label.[/color]", AREW_SOUNDS)
 	await Signals.do_dialogue("[color={protag_color}]{protag_name}[/color]", "[color={protag_color}]%s; type %s; file name: %s[/color]" % [
 		in_world_name,
 		SharedVars.type_map.get(appearance, ""),
 		name
-	])
+	], AREW_SOUNDS)

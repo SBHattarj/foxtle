@@ -1,13 +1,19 @@
 extends CanvasLayer
 
 @onready
-var dialogue_node: RichTextLabel = $Control/DialoguePanel/MarginContainer/Dialogue
+var dialogue_node: RichTextLabel = $Control/DialogueMargin/Dialogue
 
 @onready
-var name_node: RichTextLabel = $Control/Panel/MarginContainer/Name
+var name_node: RichTextLabel = $Control/NameMargin/Name
+@onready
+var dialogue_pointer: Sprite2D = $DialoguePointer
+
+const AI_SOUND: AudioStream = preload("uid://d16m2bqeiteke")
 
 @onready
 var type_timer: Timer = $TypeTimer
+@onready
+var audio: AudioStreamPlayer = $AudioStreamPlayer
 
 @export
 var type_speed := 100.0:
@@ -21,6 +27,11 @@ var dialogue := "":
 		dialogue = val
 		if dialogue_node == null: return
 		dialogue_node.text = val
+
+var parsed_dialogue := "":
+	get():
+		if dialogue_node == null: return ""
+		return dialogue_node.get_parsed_text()
 
 var character_name := "":
 	set(val):
@@ -52,30 +63,43 @@ func _ready() -> void:
 
 func run(
 	name: String,
-	dialogue: String
+	dialogue: String,
+	sound: AudioStream = AI_SOUND
 ):
-	await queued_run.call(name, dialogue)
+	await queued_run.call(name, dialogue, sound)
 
 func _run(
 	chara_name: String,
-	dialogue: String
+	dialogue: String,
+	sound: AudioStream = AI_SOUND
 ):
+	if sound == null:
+		sound = AI_SOUND
+	dialogue_pointer.visible = false
 	visible = true
 	visible_characters = 0
 	self.dialogue = dialogue.format(SharedVars.to_dict())
 	character_name = chara_name.format(SharedVars.to_dict())
 	type_timer.start()
+	audio.stream = sound
 	while visible_characters < max_characters:
+		audio.pitch_scale = (ord(parsed_dialogue[visible_characters])+127.5)/255.0
 		var wait_result := await AsyncUtils.wait_any([
 			func(): await type_timer.timeout,
 			func(): await Signals.player_interact
 		])
+		audio.stop()
 		if wait_result == 1:
+			Signals.run_ui_audio("SelectAudio")
 			visible_characters = max_characters
 			break
 		visible_characters += 1
+		audio.play()
+	dialogue_pointer.visible = true
 	type_timer.stop()
+	audio.stop()
 	await Signals.player_interact
+	Signals.run_ui_audio("SelectAudio")
 	handle_dialogue_hide()
 
 func handle_dialogue_hide():

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cuv5e0e7mitp6" path="res://overworld/maps/map.gd" id="2_5m43l"]
 [ext_resource type="Script" uid="uid://b6gsepvcc0r2f" path="res://overworld/maps/in_gate.gd" id="3_00su7"]
 [ext_resource type="Script" uid="uid://20okh1dlqyfj" path="res://overworld/events/event.gd" id="4_r7wix"]
+[ext_resource type="AudioStream" uid="uid://3opxdo44b3mb" path="res://sounds/ArewSounds.wav" id="5_00su7"]
 [ext_resource type="PackedScene" uid="uid://5j2yq0qbq7g2" path="res://overworld/characters/character_scene/terminal/terminal.tscn" id="5_ae8xj"]
 [ext_resource type="TileSet" uid="uid://dl4g2wij35upi" path="res://overworld/tilemaps/spaceship_inside_broken_parts.tres" id="6_situh"]
 [ext_resource type="Script" uid="uid://sserttecf06" path="res://overworld/maps/map_utils/out_gate/out_gate.gd" id="7_5m43l"]
@@ -27,6 +28,7 @@ script = ExtResource("4_r7wix")
 start_type = 1
 character_name = "[color={protag_color}]{protag_name}[/color]"
 dialogue = "[color={protag_color}]Huh?[/color]"
+audio = ExtResource("5_00su7")
 save_status = true
 terminal = NodePath("../Terminal")
 next_events = [NodePath("DialogueProtag"), NodePath("ProtagTurnLeft")]
@@ -36,6 +38,7 @@ metadata/_custom_type_script = "uid://20okh1dlqyfj"
 script = ExtResource("4_r7wix")
 character_name = "[color={protag_color}]{protag_name}[/color]"
 dialogue = "[color={protag_color}]Where is this?[/color]"
+audio = ExtResource("5_00su7")
 wait_for_events = [NodePath("../ProtagTurnLeft/ProtagTurnRight")]
 next_events = [NodePath("DialogueAI"), NodePath("AIWarning")]
 metadata/_custom_type_script = "uid://20okh1dlqyfj"
@@ -66,6 +69,7 @@ metadata/_custom_type_script = "uid://20okh1dlqyfj"
 script = ExtResource("4_r7wix")
 character_name = "[color={protag_color}]{protag_name}[/color]"
 dialogue = "[color={protag_color}]What do you mean?[/color]"
+audio = ExtResource("5_00su7")
 next_events = [NodePath("DialogueAI"), NodePath("AIProcessing")]
 metadata/_custom_type_script = "uid://20okh1dlqyfj"
 
@@ -80,6 +84,7 @@ metadata/_custom_type_script = "uid://20okh1dlqyfj"
 script = ExtResource("4_r7wix")
 character_name = "[color={protag_color}]{protag_name}[/color]"
 dialogue = "[color={protag_color}]Something happen?[/color]"
+audio = ExtResource("5_00su7")
 next_events = [NodePath("DialogueAI")]
 metadata/_custom_type_script = "uid://20okh1dlqyfj"
 
@@ -94,6 +99,7 @@ metadata/_custom_type_script = "uid://20okh1dlqyfj"
 script = ExtResource("4_r7wix")
 character_name = "[color={protag_color}]{protag_name}[/color]"
 dialogue = "[color={protag_color}]Hmm... yes I do.[/color]"
+audio = ExtResource("5_00su7")
 next_events = [NodePath("DialogueAI")]
 metadata/_custom_type_script = "uid://20okh1dlqyfj"
 
@@ -201,7 +207,7 @@ metadata/_custom_type_script = "uid://sserttecf06"
 shape = SubResource("RectangleShape2D_00su7")
 
 [node name="InGate" type="Node2D" parent="." unique_id=2077440277]
-position = Vector2(144, 34)
+position = Vector2(144, 36)
 script = ExtResource("3_00su7")
 direction = 1
 metadata/_custom_type_script = "uid://b6gsepvcc0r2f"

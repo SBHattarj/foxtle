@@ -125,6 +125,9 @@ func register_object_ided_handler(c: Callable, starter: Signal, start_id_locatio
 
 
 signal player_interact
+signal player_interact_continouse
+signal player_interact_released
+signal player_pressed_back
 
 enum DirectionButtons {
 	UP,
@@ -154,25 +157,34 @@ func _input(event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
 	if event.is_action_pressed("interact"):
 		player_interact.emit()
+	if event.is_action("interact"):
+		player_interact_continouse.emit()
+	if event.is_action_released("interact"):
+		player_interact_released.emit()
+	if event.is_action_pressed("back"):
+		player_pressed_back.emit()
 	for action in action_button_map:
 		if event.is_action_pressed(action):
 			player_direction_button_pressed_emit(action_button_map[action])
 		if event.is_action_released(action):
 			player_direction_button_released_emit(action_button_map[action])
 
-signal dialogue_start(id: int, name: String, dialogue: String)
+func wait_for_direction_released(direction):
+	await wait_for_id(player_direction_button_released, direction)
 
-func dialogue_start_emit(id: int, name: String, dialogue: String):
-	dialogue_start.emit(id, name, dialogue)
+signal dialogue_start(id: int, name: String, dialogue: String, audio: AudioStream)
+
+func dialogue_start_emit(id: int, name: String, dialogue: String, audio: AudioStream = null):
+	dialogue_start.emit(id, name, dialogue, audio)
 
 signal dialogue_end(id: int)
 
 func register_dialogue(c: Callable):
 	register_ided_handler(c, dialogue_start, 0, dialogue_end, false)
 
-func do_dialogue(name: String, dialogue: String):
+func do_dialogue(name: String, dialogue: String, audio: AudioStream = null):
 	var id := global_id_generator.get_id()
-	dialogue_start_emit(id, name, dialogue)
+	dialogue_start_emit(id, name, dialogue, audio)
 	await wait_for_id(dialogue_end, id)
 	global_id_generator.return_id(id)
 
@@ -189,10 +201,71 @@ func event_unblock_emit(event_id: int):
 func call_with_event_block(c: Callable):
 	return await call_with_block(c, event_block, event_unblock)
 
+signal event_full_unblock_signal
+func event_full_unblock():
+	event_full_unblock_signal.emit()
+
 func make_event_block_handler() -> BlockHandler:
-	return BlockHandler.new(event_block, event_unblock)
+	var handler := BlockHandler.new(event_block, event_unblock)
+	event_full_unblock_signal.connect(handler.force_unblock)
+	return handler
 
 signal map_change(map: String, gate_id: int)
 
 func map_change_emit(map: String, gate_id: int):
 	map_change.emit(map, gate_id)
+
+signal map_transition_start_start(id: int)
+
+func map_transition_start_start_emit(id: int):
+	map_transition_start_start.emit(id)
+
+signal map_transition_start_end(id: int)
+
+func map_transition_start_end_emit(id: int):
+	map_transition_start_end.emit(id)
+
+func register_map_transition_start(c: Callable):
+	register_ided_handler(c, map_transition_start_start, 0, map_transition_start_end, false)
+
+func do_map_transition_start():
+	var id := global_id_generator.get_id()
+	map_transition_start_start_emit(id)
+	await Signals.wait_for_id(map_transition_start_end, id)
+	global_id_generator.return_id(id)
+
+signal map_transition_end_start(id: int)
+func map_transition_end_start_emit(id: int):
+	map_transition_end_start.emit(id)
+
+signal map_transition_end_end(id: int)
+func map_transition_end_end_emit(id: int):
+	map_transition_end_end.emit(id)
+
+func register_map_transition_end(c: Callable):
+	register_ided_handler(c, map_transition_end_start, 0, map_transition_end_end, false)
+
+func do_map_transition_end():
+	var id := global_id_generator.get_id()
+	map_transition_end_start_emit(id)
+	await Signals.wait_for_id(map_transition_end_end, id)
+	global_id_generator.return_id(id)
+
+signal show_map_name_signal
+func show_map_name():
+	show_map_name_signal.emit()
+
+signal run_ui_audio_signal(name: String)
+
+func run_ui_audio(name: String):
+	run_ui_audio_signal.emit(name)
+
+signal change_bgm_signal(stream: AudioStream, ease_duration: float)
+
+func change_bgm(stream: AudioStream, ease_duration: float = 0.5):
+	change_bgm_signal.emit(stream, ease_duration)
+	
+signal map_initialised
+
+func map_initialised_emit():
+	map_initialised.emit()

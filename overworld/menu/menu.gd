@@ -25,7 +25,7 @@ var redo_timer: Timer = $RedoTimer
 @onready
 var menu_animation: AnimationPlayer = $MenuAnimation
 
-var even_block_handler := Signals.make_event_block_handler()
+var event_block_handler := Signals.make_event_block_handler()
 
 var option_map: Dictionary[String, Callable] = {
 	OPEN_DATABASE_TEXT: _handle_open_database,
@@ -60,7 +60,7 @@ func _ready() -> void:
 	Signals.player_pressed_back.connect(run)
 
 func run():
-	if even_block_handler.is_blocked: return
+	if event_block_handler.is_blocked: return
 	Signals.call_with_event_block(_run)
 
 func _run():

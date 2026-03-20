@@ -52,9 +52,9 @@ func _get_current_option() -> String:
 		var option: MenuOption = menu_items.get_child(i)
 		if option.enabled:
 			return option.text
-	var option: MenuOption = menu_items.get_child(0)
-	option.enabled = true
-	return option.text
+	var option_0: MenuOption = menu_items.get_child(0)
+	option_0.enabled = true
+	return option_0.text
 
 func _ready() -> void:
 	Signals.player_pressed_back.connect(run)
@@ -89,7 +89,7 @@ func _run():
 	menu_animation.play("menu_close")
 	await menu_animation.animation_finished
 
-func _handle_direction_button(direction: Signals.DirectionButtons):
+func _handle_direction_button(direction: Signals.DirectionButtons, spawn_redo := true):
 	var selected_index := 0
 	var last_selected_option: MenuOption = null
 	var option_count := menu_items.get_child_count()
@@ -109,7 +109,8 @@ func _handle_direction_button(direction: Signals.DirectionButtons):
 		Signals.DirectionButtons.DOWN:
 			selected_index += 1
 	Signals.run_ui_audio("CursorMoveAudio")
-	_redo_direction(direction)
+	if spawn_redo:
+		_redo_direction(direction)
 	selected_index %= option_count
 	last_selected_option.enabled = false
 	var selected_option: MenuOption = menu_items.get_child(selected_index)
@@ -123,7 +124,7 @@ func _redo_direction(direction: Signals.DirectionButtons):
 	])
 	if redo_flag != 0:
 		return
-	_handle_direction_button(direction)
+	_handle_direction_button(direction, false)
 	redo_timer.stop()
 	redo_timer.start()
 	while true:
@@ -133,7 +134,7 @@ func _redo_direction(direction: Signals.DirectionButtons):
 		])
 		if redo_flag != 0:
 			return
-		_handle_direction_button(direction)
+		_handle_direction_button(direction, false)
 
 
 func _handle_open_database():
@@ -146,9 +147,9 @@ func _handle_end_session():
 
 func _handle_system_configuration():
 	await populate_menu_items([
-		"Master Volume: %s" % roundi(Core.get_volume("Master")*100),
-		"Music Volume: %s" % roundi(Core.get_volume("Music")*100),
-		"SFX Volume: %s" % roundi(Core.get_volume("SFX")*100),
+		"Master Volume: %s%%" % roundi(Core.get_volume("Master")*100),
+		"Music Volume: %s%%" % roundi(Core.get_volume("Music")*100),
+		"SFX Volume: %s%%" % roundi(Core.get_volume("SFX")*100),
 		"Back"
 	])
 	while true:
@@ -208,5 +209,5 @@ func _handle_volume_change(type: String):
 	current_volume = current_integer_value/100.0
 	Core.set_volume(type, current_volume)
 	var option: MenuOption = menu_items.get_child(type_index_map[type])
-	option.text = "%s Volume: %s" % [type, current_integer_value]
+	option.text = "%s Volume: %s%%" % [type, current_integer_value]
 	Core.save_player()

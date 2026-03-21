@@ -108,7 +108,8 @@ func _handle_direction_button(direction: Signals.DirectionButtons, spawn_redo :=
 			selected_index += option_count-1
 		Signals.DirectionButtons.DOWN:
 			selected_index += 1
-	Signals.run_ui_audio("CursorMoveAudio")
+	if direction in [Signals.DirectionButtons.UP, Signals.DirectionButtons.DOWN]:
+		Signals.run_ui_audio("CursorMoveAudio")
 	if spawn_redo:
 		_redo_direction(direction)
 	selected_index %= option_count

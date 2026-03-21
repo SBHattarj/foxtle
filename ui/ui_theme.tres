@@ -1,0 +1,17 @@
+[gd_resource type="Theme" format=3 uid="uid://jcbaeuiycv75"]
+
+[ext_resource type="FontFile" uid="uid://ddbyi7pmff5c2" path="res://kritta_images/font/svgs/PixelSDF.ttf" id="1_udl1o"]
+
+[resource]
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 4
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_udl1o")
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_offset_y = 1
+RichTextLabel/constants/shadow_outline_size = 4
+RichTextLabel/font_sizes/normal_font_size = 24
+RichTextLabel/fonts/normal_font = ExtResource("1_udl1o")

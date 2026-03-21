@@ -34,12 +34,15 @@ animations = [{
 accessibility_name = "menu option"
 theme_override_constants/margin_left = 32
 script = ExtResource("1_fdr0q")
+text = "fadsfasdfasdfa"
 
 [node name="Label" type="Label" parent="." unique_id=285644456]
 layout_mode = 2
 accessibility_name = "option text"
+text = "fadsfasdfasdfa"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1973536853]
-position = Vector2(8, 12)
+position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_ygnmj")
-animation = &"on"
+animation = &"off"
+frame_progress = 0.0767103

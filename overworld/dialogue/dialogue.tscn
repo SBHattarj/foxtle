@@ -3,9 +3,7 @@
 [ext_resource type="Script" uid="uid://b30wj7q8hkme1" path="res://overworld/dialogue/dialogue.gd" id="1_javst"]
 [ext_resource type="Texture2D" uid="uid://jei3rq0wohsk" path="res://kritta_images/dialogue_box.png" id="2_javst"]
 [ext_resource type="Texture2D" uid="uid://yxijmqgupumj" path="res://kritta_images/dialogue_pointer.png" id="3_pbp5j"]
-
-[sub_resource type="Theme" id="Theme_ttwm5"]
-RichTextLabel/constants/outline_size = 4
+[ext_resource type="Theme" uid="uid://jcbaeuiycv75" path="res://ui/ui_theme.tres" id="3_ttwm5"]
 
 [sub_resource type="Animation" id="Animation_ttwm5"]
 length = 0.001
@@ -59,7 +57,7 @@ anchors_preset = 0
 offset_right = 577.0
 offset_bottom = 324.0
 accessibility_name = "DialogueContainer"
-theme = SubResource("Theme_ttwm5")
+theme = ExtResource("3_ttwm5")
 
 [node name="NameMargin" type="MarginContainer" parent="Control" unique_id=1162579056]
 layout_mode = 1
@@ -74,7 +72,7 @@ grow_horizontal = 2
 grow_vertical = 2
 accessibility_name = "NameMargin"
 theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
+theme_override_constants/margin_top = 17
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
@@ -97,7 +95,7 @@ grow_horizontal = 2
 grow_vertical = 2
 accessibility_name = "DialogueMargin"
 theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
+theme_override_constants/margin_top = 17
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 

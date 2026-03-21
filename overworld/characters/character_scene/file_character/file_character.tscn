@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dd4temtafftit" path="res://kritta_images/memory_unit.png" id="5_8cpbh"]
 [ext_resource type="Texture2D" uid="uid://c5m2cjld0o4c6" path="res://kritta_images/power_unit.png" id="6_3orqw"]
 [ext_resource type="Texture2D" uid="uid://c8ml5fl2nioex" path="res://kritta_images/processing_unit.png" id="7_0ylib"]
+[ext_resource type="AudioStream" uid="uid://3opxdo44b3mb" path="res://sounds/ArewSounds.wav" id="9_0ylib"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bcmkh"]
 atlas = ExtResource("3_dppio")
@@ -281,6 +282,7 @@ metadata/_custom_type_script = "uid://4frpjmltw5a5"
 script = ExtResource("3_rlk8y")
 character_name = "[color={protag_color}]{protag_name}[/color]"
 dialogue = "[color={protag_color}]I can't pick this up, is this stuck to the floor?[/color]"
+sound = ExtResource("9_0ylib")
 next_dialogue = SubResource("Resource_dppio")
 return_value = 10
 metadata/_custom_type_script = "uid://4frpjmltw5a5"
@@ -293,11 +295,12 @@ appearances = Array[SpriteFrames]([SubResource("SpriteFrames_dppio"), SubResourc
 dialogue_index = 0
 dialogues = Array[ExtResource("3_rlk8y")]([SubResource("Resource_bcmkh")])
 is_spawner = false
-is_spawner_for_terminal = null
+randomize_name = true
+is_spawner_for_terminal = false
 sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2" unique_id=784401771]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_dppio")
 animation = &"up"
-frame_progress = 0.7939163
+frame_progress = 0.28662723

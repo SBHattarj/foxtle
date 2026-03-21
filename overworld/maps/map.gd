@@ -13,6 +13,7 @@ var in_gates: Array[InGate]
 var file_character_spawn_location: Node2D
 
 var characters: Array[FileCharacter] = []
+var event_block_handler := Signals.make_event_block_handler()
 
 func _ready():
 	if bgm == null:
@@ -39,9 +40,16 @@ func _focus_exited():
 	for character in characters:
 		Core.unload_file_character(character.name)
 func _focus_entered():
+	var wait_result := await AsyncUtils.wait_any([
+		func(): await event_block_handler.wait_for_unblock(),
+		func(): await get_viewport().focus_exited
+	])
+	if wait_result == 1:
+		return
 	var character_names := Core.get_file_characters_in_map()
-	for character_index in range(len(characters)):
-		var character := characters[len(characters)-character_index-1]
+	var character_count := len(characters)
+	for character_index in range(character_count):
+		var character := characters[character_count-character_index-1]
 		if character.name not in character_names:
 			character.delete_self()
 			characters.erase(character)

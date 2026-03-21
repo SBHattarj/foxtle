@@ -8,6 +8,18 @@
 [ext_resource type="AudioStream" uid="uid://bigonc0kku0ch" path="res://sounds/ui_select.wav" id="6_vga8m"]
 [ext_resource type="AudioStream" uid="uid://cof0yxpovtlpa" path="res://sounds/ui_back.wav" id="7_45dei"]
 
+[sub_resource type="Resource" id="Resource_pntbb"]
+script = ExtResource("2_inxl0")
+low = 1.5
+high = 2.0
+metadata/_custom_type_script = "uid://bqkw1vm7bhvep"
+
+[sub_resource type="Resource" id="Resource_jo4dm"]
+script = ExtResource("2_inxl0")
+low = 3.0
+high = 4.0
+metadata/_custom_type_script = "uid://bqkw1vm7bhvep"
+
 [sub_resource type="Resource" id="Resource_xy5te"]
 script = ExtResource("2_inxl0")
 low = 2.5
@@ -30,18 +42,6 @@ metadata/_custom_type_script = "uid://bqkw1vm7bhvep"
 script = ExtResource("2_inxl0")
 low = 2.0
 high = 2.5
-metadata/_custom_type_script = "uid://bqkw1vm7bhvep"
-
-[sub_resource type="Resource" id="Resource_jo4dm"]
-script = ExtResource("2_inxl0")
-low = 3.0
-high = 4.0
-metadata/_custom_type_script = "uid://bqkw1vm7bhvep"
-
-[sub_resource type="Resource" id="Resource_pntbb"]
-script = ExtResource("2_inxl0")
-low = 1.5
-high = 2.0
 metadata/_custom_type_script = "uid://bqkw1vm7bhvep"
 
 [node name="UiSoundManager" type="Node" unique_id=634181647 node_paths=PackedStringArray("ui_audio_streams")]
@@ -86,6 +86,7 @@ bus = &"SFX"
 [node name="CursorMoveAudio" type="AudioStreamPlayer" parent="." unique_id=2111014786]
 stream = ExtResource("6_vga8m")
 pitch_scale = 4.0
+max_polyphony = 4
 bus = &"SFX"
 
 [node name="BackAudio" type="AudioStreamPlayer" parent="." unique_id=1847479938]

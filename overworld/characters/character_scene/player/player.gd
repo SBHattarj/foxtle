@@ -51,6 +51,11 @@ var binary_converter := BinaryConverter.new().add_part(
 		Core.get_volume.bind("SFX"),
 		func(val): Core.set_volume("SFX", val)
 	)
+).add_part(
+	BinaryConverter.U8.new(
+		Core.get_viewport_size_ratio,
+		Core.set_viewport_ratio
+	)
 )
 
 func _ready():

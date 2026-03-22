@@ -26,6 +26,7 @@ terminal_show_name = "Main Terminal"
 
 [node name="Event" type="Node2D" parent="Terminal" unique_id=712015465]
 script = ExtResource("3_njgaf")
+one_time = false
 character_name = "[color={protag_color}]{protag_name}[/color]"
 dialogue = "[color={protag_color}]This one is broken and can't be fixed.[/color]"
 audio = ExtResource("5_0apxx")
@@ -38,66 +39,92 @@ state = 4
 terminal_name = "logger_terminal"
 terminal_show_name = "Logger Terminal"
 
-[node name="Event" type="Node2D" parent="TerminalLogger" unique_id=1063662884 node_paths=PackedStringArray("next_events")]
+[node name="Event" type="Node2D" parent="TerminalLogger" unique_id=1336364828 node_paths=PackedStringArray("next_events")]
+script = ExtResource("3_njgaf")
+type = 0
+one_time = false
+next_events = [NodePath("Event"), NodePath("Event2")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="Event" type="Node2D" parent="TerminalLogger/Event" unique_id=1063662884 node_paths=PackedStringArray("terminal", "next_events")]
 script = ExtResource("3_njgaf")
 character_name = "Logger Terminal"
 dialogue = "Log 001:"
+save_status = true
+terminal = NodePath("../..")
 next_events = [NodePath("Event")]
 metadata/_custom_type_script = "uid://20okh1dlqyfj"
 
-[node name="Event" type="Node2D" parent="TerminalLogger/Event" unique_id=363842904 node_paths=PackedStringArray("next_events")]
+[node name="Event" type="Node2D" parent="TerminalLogger/Event/Event" unique_id=363842904 node_paths=PackedStringArray("next_events")]
 script = ExtResource("3_njgaf")
 character_name = "Logger Terminal"
 dialogue = "This ship is sheduled to be retired not even a month from now. Everyone is sad, since we had practically grew up with it."
 next_events = [NodePath("Event")]
 metadata/_custom_type_script = "uid://20okh1dlqyfj"
 
-[node name="Event" type="Node2D" parent="TerminalLogger/Event/Event" unique_id=1375732282 node_paths=PackedStringArray("next_events")]
+[node name="Event" type="Node2D" parent="TerminalLogger/Event/Event/Event" unique_id=1375732282 node_paths=PackedStringArray("next_events")]
 script = ExtResource("3_njgaf")
 character_name = "Logger Terminal"
 dialogue = "But its systems are slowly starting fail, it can become dangerouse to force it to continue to work."
 next_events = [NodePath("Event")]
 metadata/_custom_type_script = "uid://20okh1dlqyfj"
 
-[node name="Event" type="Node2D" parent="TerminalLogger/Event/Event/Event" unique_id=1825461729 node_paths=PackedStringArray("next_events")]
+[node name="Event" type="Node2D" parent="TerminalLogger/Event/Event/Event/Event" unique_id=1825461729 node_paths=PackedStringArray("next_events")]
 script = ExtResource("3_njgaf")
 character_name = "Logger Terminal"
 dialogue = "Curiously, the ship won't be demolished like most others, but would be left in space in the middle of nowhere."
 next_events = [NodePath("Event")]
 metadata/_custom_type_script = "uid://20okh1dlqyfj"
 
-[node name="Event" type="Node2D" parent="TerminalLogger/Event/Event/Event/Event" unique_id=727908333 node_paths=PackedStringArray("next_events")]
+[node name="Event" type="Node2D" parent="TerminalLogger/Event/Event/Event/Event/Event" unique_id=727908333 node_paths=PackedStringArray("next_events")]
 script = ExtResource("3_njgaf")
 character_name = "Logger Terminal"
 dialogue = "Some are making conspiracy theories."
 next_events = [NodePath("Event")]
 metadata/_custom_type_script = "uid://20okh1dlqyfj"
 
-[node name="Event" type="Node2D" parent="TerminalLogger/Event/Event/Event/Event/Event" unique_id=139116603 node_paths=PackedStringArray("next_events")]
+[node name="Event" type="Node2D" parent="TerminalLogger/Event/Event/Event/Event/Event/Event" unique_id=139116603 node_paths=PackedStringArray("next_events")]
 script = ExtResource("3_njgaf")
 character_name = "Logger Terminal"
 dialogue = "Some are speculating, that someone might be made to board this ship before its launched back into the space."
 next_events = [NodePath("Event")]
 metadata/_custom_type_script = "uid://20okh1dlqyfj"
 
-[node name="Event" type="Node2D" parent="TerminalLogger/Event/Event/Event/Event/Event/Event" unique_id=1475923408 node_paths=PackedStringArray("next_events")]
+[node name="Event" type="Node2D" parent="TerminalLogger/Event/Event/Event/Event/Event/Event/Event" unique_id=1475923408 node_paths=PackedStringArray("next_events")]
 script = ExtResource("3_njgaf")
 character_name = "Logger Terminal"
 dialogue = "They speculate-"
-next_events = [NodePath("Event"), NodePath("Event2")]
+next_events = [NodePath("Event"), NodePath("Event2"), NodePath("Event3")]
 metadata/_custom_type_script = "uid://20okh1dlqyfj"
 
-[node name="Event" type="Node2D" parent="TerminalLogger/Event/Event/Event/Event/Event/Event/Event" unique_id=342884394 node_paths=PackedStringArray("target")]
+[node name="Event" type="Node2D" parent="TerminalLogger/Event/Event/Event/Event/Event/Event/Event/Event" unique_id=342884394 node_paths=PackedStringArray("target")]
 script = ExtResource("3_njgaf")
 type = 6
-target = NodePath("../../../../../../../..")
+target = NodePath("../../../../../../../../..")
 metadata/_custom_type_script = "uid://20okh1dlqyfj"
 
-[node name="Event2" type="Node2D" parent="TerminalLogger/Event/Event/Event/Event/Event/Event/Event" unique_id=1467582403]
+[node name="Event2" type="Node2D" parent="TerminalLogger/Event/Event/Event/Event/Event/Event/Event/Event" unique_id=1467582403]
 script = ExtResource("3_njgaf")
 character_name = "[color={protag_color}]{protag_name}[/color]"
 dialogue = "[color={protag_color}]It turned off, and won't turn on again.[/color]"
 audio = ExtResource("5_0apxx")
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="Event3" type="Node2D" parent="TerminalLogger/Event/Event/Event/Event/Event/Event/Event/Event" unique_id=1286018271 node_paths=PackedStringArray("next_events")]
+script = ExtResource("3_njgaf")
+type = 11
+next_events = [NodePath("../../../../../../../../Event2")]
+metadata/_custom_type_script = "uid://20okh1dlqyfj"
+
+[node name="Event2" type="Node2D" parent="TerminalLogger/Event" unique_id=1025034345 node_paths=PackedStringArray("terminal")]
+script = ExtResource("3_njgaf")
+enabled = false
+one_time = false
+character_name = "[color={protag_color}]{protag_name}[/color]"
+dialogue = "[color={protag_color}]It won't turn on again.[/color]"
+audio = ExtResource("5_0apxx")
+save_status = true
+terminal = NodePath("../..")
 metadata/_custom_type_script = "uid://20okh1dlqyfj"
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1262360507]

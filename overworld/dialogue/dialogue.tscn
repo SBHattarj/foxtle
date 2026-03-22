@@ -73,14 +73,16 @@ grow_vertical = 2
 accessibility_name = "NameMargin"
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 17
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_right = -8
 theme_override_constants/margin_bottom = 10
 
 [node name="Name" type="RichTextLabel" parent="Control/NameMargin" unique_id=738852931]
 layout_mode = 2
 accessibility_name = "Name"
 bbcode_enabled = true
+text = "Logger Terminal"
 scroll_active = false
+autowrap_mode = 0
 
 [node name="DialogueMargin" type="MarginContainer" parent="Control" unique_id=1709385048]
 layout_mode = 1

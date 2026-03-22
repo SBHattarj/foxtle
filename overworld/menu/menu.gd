@@ -151,6 +151,7 @@ func _handle_system_configuration():
 		"Master Volume: %s%%" % roundi(Core.get_volume("Master")*100),
 		"Music Volume: %s%%" % roundi(Core.get_volume("Music")*100),
 		"SFX Volume: %s%%" % roundi(Core.get_volume("SFX")*100),
+		"Display Size: %sx" % Core.get_viewport_size_ratio(),
 		"Back"
 	])
 	while true:
@@ -163,13 +164,20 @@ func _handle_system_configuration():
 		var current_option_text := _get_current_option()
 		if current_option_text == "Back":
 			break
-		var type := current_option_text.split(" ")[0]
 		Signals.run_ui_audio("SelectAudio")
+		if current_option_text.begins_with("Display"):
+			_handle_change_screen_size()
+			continue
+		var type := current_option_text.split(" ")[0]
 		_handle_volume_change(type)
 		_redo_volume_interact(type)
 	await populate_menu_items(base_menu_items)
 	Signals.run_ui_audio("BackAudio")
 	return false
+func _handle_change_screen_size():
+	Core.increment_size_ratio()
+	(menu_items.get_child(3) as MenuOption).text = "Display Size: %sx" % Core.get_viewport_size_ratio()
+	Core.save_player()
 
 func _redo_volume_interact(type: String):
 	first_redo_timer.start()

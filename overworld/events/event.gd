@@ -15,6 +15,7 @@ enum Type {
 	TURN_ON_HOLDER = 8,
 	TURN_OFF_HOLDER = 9,
 	HOLDER_CHOICE = 10,
+	ENABLE_NEXT = 11,
 	NONE = 0
 }
 
@@ -38,7 +39,8 @@ var type_map: Dictionary[Type, Callable] = {
 	Type.OPEN_DATABASE: handle_open_database,
 	Type.TURN_ON_HOLDER: handle_turn_holder_on,
 	Type.TURN_OFF_HOLDER: handle_turn_holder_off,
-	Type.HOLDER_CHOICE: handle_holder_choice
+	Type.HOLDER_CHOICE: handle_holder_choice,
+	Type.ENABLE_NEXT: handle_enable_next
 }
 
 @export
@@ -183,9 +185,12 @@ var property_validator := PropertyValidator.new().add(
 func _validate_property(property: Dictionary) -> void:
 	property_validator.validate(property)
 
+var event_block_handler := Signals.make_event_block_handler()
+
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	_handle_save_load()
+	event_block_handler.full_unblock.connect(_handle_save_load)
 	if start_type == Starter.IMMEDIATE:
 		called_immediate()
 
@@ -324,3 +329,8 @@ func handle_holder_choice() -> int:
 		var holder := holders[holder_index]
 		if holder.is_on(): return holder_index
 	return len(holders)
+
+func handle_enable_next() -> int:
+	for event in next_events:
+		event.enabled = true
+	return -1

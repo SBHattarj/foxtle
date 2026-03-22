@@ -72,3 +72,34 @@ func get_volume(bus: String) -> float:
 
 func set_volume(bus: String, volume: float):
 	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(bus), volume)
+
+func get_default_viewport_size() -> Vector2:
+	var width: int = ProjectSettings.get_setting("display/window/size/viewport_width")
+	var height: int = ProjectSettings.get_setting("display/window/size/viewport_height")
+	return Vector2(width, height)
+
+func get_current_viewport_size() -> Vector2:
+	return get_window().size
+
+func get_viewport_size_ratio() -> int:
+	return ceili(get_current_viewport_size().x/get_default_viewport_size().x)
+
+const default_viewport_ratio := 2
+
+func set_viewport_ratio(val: int):
+	if val < 1:
+		val = default_viewport_ratio
+	DisplayServer.window_set_size(get_default_viewport_size()*val)
+
+func get_screen_size() -> Vector2:
+	return DisplayServer.screen_get_size()
+
+func increment_size_ratio():
+	var current := get_viewport_size_ratio()
+	var next_ratio := current + 1
+	var default_size := get_default_viewport_size()
+	var new_size := default_size * next_ratio
+	var screen_size := get_screen_size()
+	if screen_size.x < new_size.x or screen_size.y < new_size.y:
+		next_ratio = 1
+	set_viewport_ratio(next_ratio)

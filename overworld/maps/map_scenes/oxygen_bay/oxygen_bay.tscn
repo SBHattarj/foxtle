@@ -59,6 +59,7 @@ state = 5
 
 [node name="TerminalDialogue" type="Node2D" parent="O2Generator" unique_id=1380249211 node_paths=PackedStringArray("next_events")]
 script = ExtResource("4_ifo7s")
+one_time = false
 character_name = "Main Terminal"
 dialogue = "O2 Generator Operational."
 next_events = [NodePath("StartO2")]
@@ -97,8 +98,6 @@ in_world_name = "Memory Unit 029"
 appearance = 2
 dialogue_index = 10
 is_spawner = true
-randomize_name = true
-is_spawner_for_terminal = false
 direction = 2
 
 [node name="ProcessingUnit030" parent="Spawners" unique_id=1453607884 node_paths=PackedStringArray("terminal") instance=ExtResource("5_1yje6")]
@@ -107,7 +106,6 @@ in_world_name = "Processing Unit 030"
 appearance = 4
 dialogue_index = 10
 is_spawner = true
-randomize_name = true
 is_spawner_for_terminal = true
 terminal = NodePath("../../O2Generator")
 direction = 2

@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://fc5b1tv60e78"]
+
+[ext_resource type="Script" uid="uid://b5jrb1jnrpuux" path="res://ui/components/texture_tiler.gd" id="1_eevsw"]
+[ext_resource type="Texture2D" uid="uid://cinihex1uw0t7" path="res://kritta_images/map_name_display_tiled_end.png" id="2_4o3gl"]
+[ext_resource type="Texture2D" uid="uid://bgl2pwg6alc4s" path="res://kritta_images/map_name_display_tiled_large.png" id="3_t147g"]
+
+[node name="VerticalTextureTiler" type="Control" unique_id=1416882210 node_paths=PackedStringArray("target")]
+custom_minimum_size = Vector2(230, 73)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 230.0
+offset_bottom = 73.0
+script = ExtResource("1_eevsw")
+mid_tile = ExtResource("3_t147g")
+end_tile = ExtResource("2_4o3gl")
+target = NodePath("")
+
+[node name="StartTexture" type="TextureRect" parent="." unique_id=703581942]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -37.0
+offset_bottom = -37.0
+grow_vertical = 2
+stretch_mode = 2
+
+[node name="EndTexture" type="TextureRect" parent="." unique_id=1166585832]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -37.0
+offset_bottom = 37.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_4o3gl")
+stretch_mode = 2
+
+[node name="MidTextureContainer" type="MarginContainer" parent="." unique_id=2146154470]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -37.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_right = 80
+
+[node name="MidTexture" type="TextureRect" parent="MidTextureContainer" unique_id=2001421817]
+layout_mode = 2
+texture = ExtResource("3_t147g")
+stretch_mode = 1

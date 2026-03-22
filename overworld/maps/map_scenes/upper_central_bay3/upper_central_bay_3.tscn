@@ -152,7 +152,6 @@ position = Vector2(160, 144)
 in_world_name = "Cooler Unit 030"
 dialogue_index = 10
 is_spawner = true
-randomize_name = true
 is_spawner_for_terminal = true
 terminal = NodePath("../../Terminal")
 direction = 1
@@ -163,8 +162,6 @@ in_world_name = "Memory Unit 001"
 appearance = 2
 dialogue_index = 10
 is_spawner = true
-randomize_name = true
-is_spawner_for_terminal = false
 direction = 1
 
 [node name="PowerUnit029" parent="Spawners" unique_id=1771755194 instance=ExtResource("5_arids")]
@@ -173,8 +170,6 @@ in_world_name = "Power Unit 029"
 appearance = 3
 dialogue_index = 10
 is_spawner = true
-randomize_name = true
-is_spawner_for_terminal = false
 direction = 1
 
 [node name="SpawnedCharacters" type="Node2D" parent="." unique_id=982796090]
@@ -221,7 +216,7 @@ metadata/_custom_type_script = "uid://b6gsepvcc0r2f"
 [node name="OutGateRestingBay" type="Area2D" parent="." unique_id=591542715]
 position = Vector2(64, 24)
 script = ExtResource("9_lawgg")
-map = "MainHub"
+map = "RestingBayEntrance"
 is_disabled = true
 metadata/_custom_type_script = "uid://sserttecf06"
 

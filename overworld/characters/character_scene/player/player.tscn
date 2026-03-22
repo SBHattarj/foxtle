@@ -213,7 +213,7 @@ metadata/_custom_type_script = "uid://g0err1cujku2"
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_pujbp")
 animation = &"up"
-frame_progress = 0.3032497
+frame_progress = 0.46995354
 
 [node name="Camera2D" type="Camera2D" parent="." index="4" unique_id=264338760]
 zoom = Vector2(2, 2)

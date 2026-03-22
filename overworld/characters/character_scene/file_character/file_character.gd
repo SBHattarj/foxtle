@@ -138,16 +138,16 @@ func _enter_tree() -> void:
 	delete_self.call_deferred()
 
 func assign_valid_name():
-	name = RandomUtils.random_string()
+	name = RandomUtils.random_string(1, 5)
 	fix_name_collison()
 
 func fix_name_collison():
 	if is_spawner_for_terminal:
 		while terminal.terminal_file_exists(name):
-			name += RandomUtils.random_string()
+			name += RandomUtils.random_string(1, 5)
 		return
 	while Core.file_exists_in_current_map(name):
-		name += RandomUtils.random_string()
+		name += RandomUtils.random_string(1, 5)
 	
 
 func _spawn():
@@ -197,7 +197,7 @@ func read_label():
 
 func _read_label():
 	await Signals.do_dialogue("[color={protag_color}]{protag_name}[/color]", "[color={protag_color}]I read its digital label.[/color]", AREW_SOUNDS)
-	await Signals.do_dialogue("[color={protag_color}]{protag_name}[/color]", "[color={protag_color}]%s; type %s; file name: %s[/color]" % [
+	await Signals.do_dialogue("[color={protag_color}]{protag_name}[/color]", "[color={protag_color}]%s;\ntype: %s;\nfile name: [color={file_color}]%s[/color][/color]" % [
 		in_world_name,
 		SharedVars.type_map.get(appearance, ""),
 		name

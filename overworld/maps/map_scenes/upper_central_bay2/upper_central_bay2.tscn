@@ -83,8 +83,6 @@ in_world_name = "Graphics Unit 001"
 appearance = 1
 dialogue_index = 10
 is_spawner = true
-randomize_name = true
-is_spawner_for_terminal = false
 direction = 1
 
 [node name="CoolerUnit029" parent="ComponentSpawners" unique_id=17349220 instance=ExtResource("6_u6fal")]
@@ -92,8 +90,6 @@ position = Vector2(-88, 107)
 in_world_name = "Cooler Unit 029"
 dialogue_index = 10
 is_spawner = true
-randomize_name = true
-is_spawner_for_terminal = false
 direction = 1
 
 [node name="Components" type="Node2D" parent="." unique_id=2006172177]
@@ -148,3 +144,12 @@ position = Vector2(160, 38)
 script = ExtResource("11_ygqq5")
 direction = 1
 metadata/_custom_type_script = "uid://b6gsepvcc0r2f"
+
+[node name="MapResetTutorial" type="Node2D" parent="." unique_id=1178081945 node_paths=PackedStringArray("terminal")]
+script = ExtResource("5_xu1b7")
+start_type = 1
+character_name = "AI"
+dialogue = "Now that you have seen how we will work together, I should explain another thing to you. If at any time you feel confused or you want to reset a room back to its initial state, I can just delete the database folder for it to accomplish that. So for example, I can reset the last map by deleting the [color={file_color}]UpperCentralBay1[/color] folder. Do note that doing so may lead to even you forgetting you had visited the room. The file names of the components may also be different after resetting a mapz. Doing so normally doesn't affect other rooms."
+save_status = true
+terminal = NodePath("../Terminal")
+metadata/_custom_type_script = "uid://20okh1dlqyfj"

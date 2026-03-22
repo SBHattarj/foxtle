@@ -34,7 +34,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
 "transitions": PackedFloat32Array(0.2, 1, 5, 1),
 "update": 0,
-"values": [Vector2(545, 292), Vector2(545, 286), Vector2(545, 286), Vector2(545, 292)]
+"values": [Vector2(550, 298), Vector2(550, 292), Vector2(550, 292), Vector2(550, 298)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dyhc8"]
@@ -64,23 +64,22 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 22.0
-offset_top = 126.0
-offset_right = -361.0
-offset_bottom = -148.0
+offset_left = 26.0
+offset_top = 128.0
+offset_right = -289.0
+offset_bottom = -154.0
 grow_horizontal = 2
 grow_vertical = 2
 accessibility_name = "NameMargin"
 theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 17
-theme_override_constants/margin_right = -8
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 22
 theme_override_constants/margin_bottom = 10
 
 [node name="Name" type="RichTextLabel" parent="Control/NameMargin" unique_id=738852931]
 layout_mode = 2
 accessibility_name = "Name"
 bbcode_enabled = true
-text = "Logger Terminal"
 scroll_active = false
 autowrap_mode = 0
 
@@ -89,23 +88,34 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 14.0
-offset_top = 179.0
-offset_right = -20.0
-offset_bottom = -33.0
+offset_left = 8.0
+offset_top = 170.0
+offset_right = -9.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
 accessibility_name = "DialogueMargin"
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 17
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_right = 13
+theme_override_constants/margin_bottom = 20
 
 [node name="Dialogue" type="RichTextLabel" parent="Control/DialogueMargin" unique_id=2066423827]
 layout_mode = 2
 accessibility_name = "Dialogue"
 bbcode_enabled = true
+text = "1
+2
+3
+4
+5
+6
+7"
 scroll_active = false
+scroll_following_visible_characters = true
+visible_characters = 0
+visible_characters_behavior = 1
+visible_ratio = 0.0
 
 [node name="TypeTimer" type="Timer" parent="." unique_id=1681356150]
 

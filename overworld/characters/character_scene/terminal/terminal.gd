@@ -159,14 +159,14 @@ func _report_components():
 		await Signals.do_dialogue(terminal_show_name, "components valid starting fully.")
 		return
 	var last_state := state
-	await Signals.do_dialogue(terminal_show_name, "components invalid, reporting status.")
+	await Signals.do_dialogue(terminal_show_name, "[color={error_color}]components invalid, reporting status.[/color]")
 	state = TerminalState.PROCESSING
 	var components := Core.get_terminal_components(terminal_name)
 	components.erase("log")
 	for component_checker in component_checkers:
 		var result := component_checker.extract_valid_file(terminal_name, components)
 		if not result.verified:
-			await Signals.do_dialogue(terminal_show_name, "component: %s; type: %s; status: not present;" % [
+			await Signals.do_dialogue(terminal_show_name, "[color={info_color}]component:[/color] %s;\n[color={info_color}]type:[/color] %s;\n[color={info_color}]status:[/color] [color={error_color}]not present;[/color]\n" % [
 				component_checker.character_name,
 				SharedVars.type_map[component_checker.appearance]
 			])
@@ -174,7 +174,7 @@ func _report_components():
 		if not result.file_name_match:
 			await Signals.do_dialogue(
 				terminal_show_name,
-				"component: %s; type: %s; status: present and unacceptable; database name mismatch; expected: %s; got: %s;" % [
+				"[color={info_color}]component:[/color] %s;\n[color={info_color}]type:[/color] %s;\n[color={info_color}]status:[/color] [color={error_color}]Error Database name mismatch[/color];\n[color={info_color}]expected file name:[/color] [color={file_color}]%s[/color];\n[color={info_color}]got:[/color] [color={error_color}]%s[/color];" % [
 					component_checker.character_name,
 					SharedVars.type_map[component_checker.appearance],
 					result.file_name,
@@ -185,7 +185,7 @@ func _report_components():
 			continue
 		await Signals.do_dialogue(
 			terminal_show_name,
-			"component: %s; type: %s; status: present and accepted;" % [
+			"[color={info_color}]component:[/color] %s;\n[color={info_color}]type:[/color] %s;\n[color={info_color}]status:[/color] [color={success_color}]present and accepted[/color];\n" % [
 				component_checker.character_name,
 				SharedVars.type_map[component_checker.appearance],
 			]

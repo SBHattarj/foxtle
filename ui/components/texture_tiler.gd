@@ -40,7 +40,6 @@ func _ready() -> void:
 func _on_target_changed():
 	if not is_node_ready() or target == null:
 		return
-	prints("resize", target.size)
 	if not target.resized.is_connected(_on_target_changed):
 		target.resized.connect(_on_target_changed)
 	custom_minimum_size = target.size

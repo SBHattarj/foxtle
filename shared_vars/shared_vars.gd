@@ -18,6 +18,14 @@ var protag_name := "Arew"
 
 @export
 var protag_color := color_to_hex(Color("14fffcff"))
+@export
+var info_color := color_to_hex(Color("dfe089ff"))
+@export
+var file_color := color_to_hex(Color("edcd3bff"))
+@export
+var error_color := color_to_hex(Color("db6b5aff"))
+@export
+var success_color := color_to_hex(Color("83ed4eff"))
 
 func color_to_hex(color: Color, with_alpha = false) -> String:
 	return "#" + color.to_html(with_alpha)

@@ -80,8 +80,13 @@ func _run(
 	visible_characters = 0
 	self.dialogue = dialogue.format(SharedVars.to_dict())
 	character_name = chara_name.format(SharedVars.to_dict())
+	await Core.wait_frames(1)
+	var num_visible_lines := floori(
+		dialogue_node.size.y/dialogue_node.get_line_height(0)
+	)
 	type_timer.start()
 	audio.stream = sound
+	var next_last_line := num_visible_lines
 	while visible_characters < max_characters:
 		audio.pitch_scale = (ord(parsed_dialogue[visible_characters])+127.5)/255.0
 		var wait_result := await AsyncUtils.wait_any([
@@ -91,9 +96,24 @@ func _run(
 		audio.stop()
 		if wait_result == 1:
 			Signals.run_ui_audio("SelectAudio")
-			visible_characters = max_characters
+			visible_characters = min(dialogue_node.get_line_range(next_last_line).y, max_characters)
 			break
 		visible_characters += 1
+		audio.play()
+		if dialogue_node.get_character_line(visible_characters+1) < next_last_line:
+			continue
+		dialogue_pointer.visible = true
+		wait_result = await AsyncUtils.wait_any([
+			func(): await type_timer.timeout,
+			func(): await Signals.player_interact
+		])
+		audio.stop()
+		if wait_result == 0:
+			await Signals.player_interact
+		dialogue_pointer.visible = false
+		Signals.run_ui_audio("SelectAudio")
+		visible_characters += 1
+		next_last_line += num_visible_lines
 		audio.play()
 	dialogue_pointer.visible = true
 	type_timer.stop()

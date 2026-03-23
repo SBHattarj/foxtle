@@ -81,12 +81,12 @@ func _run(
 	self.dialogue = dialogue.format(SharedVars.to_dict())
 	character_name = chara_name.format(SharedVars.to_dict())
 	await Core.wait_frames(1)
-	var num_visible_lines := floori(
-		dialogue_node.size.y/dialogue_node.get_line_height(0)
-	)
+	var dialogue_height := dialogue_node.size.y
+	var current_line := 0
+	var current_total_line_height := dialogue_node.get_line_height(current_line)
+	var current_max_line_height := dialogue_height
 	type_timer.start()
 	audio.stream = sound
-	var next_last_line := num_visible_lines
 	while visible_characters < max_characters:
 		audio.pitch_scale = (ord(parsed_dialogue[visible_characters])+127.5)/255.0
 		var wait_result := await AsyncUtils.wait_any([
@@ -96,12 +96,21 @@ func _run(
 		audio.stop()
 		if wait_result == 1:
 			Signals.run_ui_audio("SelectAudio")
-			visible_characters = min(dialogue_node.get_line_range(next_last_line).y, max_characters)
-			break
+			while current_line < dialogue_node.get_line_count():
+				current_line += 1
+				current_total_line_height += dialogue_node.get_line_height(current_line)
+				if current_max_line_height < current_total_line_height: break
+			visible_characters = dialogue_node.get_line_range(current_line-1).y
+			continue
 		visible_characters += 1
 		audio.play()
-		if dialogue_node.get_character_line(visible_characters+1) < next_last_line:
+		var next_character_line := dialogue_node.get_character_line(visible_characters+1)
+		if next_character_line != current_line:
+			current_line = next_character_line
+			current_total_line_height += dialogue_node.get_line_height(clampi(next_character_line, 0, dialogue_node.get_line_count()-1))
+		if current_total_line_height < current_max_line_height:
 			continue
+		current_max_line_height += dialogue_height
 		dialogue_pointer.visible = true
 		wait_result = await AsyncUtils.wait_any([
 			func(): await type_timer.timeout,
@@ -113,7 +122,6 @@ func _run(
 		dialogue_pointer.visible = false
 		Signals.run_ui_audio("SelectAudio")
 		visible_characters += 1
-		next_last_line += num_visible_lines
 		audio.play()
 	dialogue_pointer.visible = true
 	type_timer.stop()

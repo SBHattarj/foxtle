@@ -213,7 +213,7 @@ metadata/_custom_type_script = "uid://g0err1cujku2"
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_pujbp")
 animation = &"up"
-frame_progress = 0.46995354
+frame_progress = 0.66865575
 
 [node name="Camera2D" type="Camera2D" parent="." index="4" unique_id=264338760]
 zoom = Vector2(2, 2)
@@ -226,4 +226,9 @@ autostart = true
 [node name="BumpAudio" type="AudioStreamPlayer" parent="." index="6" unique_id=1137076621]
 stream = ExtResource("6_vl0ka")
 
+[node name="FriskDanceTimer" type="Timer" parent="." index="7" unique_id=560015677]
+wait_time = 0.1
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="save"]
+[connection signal="timeout" from="FriskDanceTimer" to="." method="_on_frisk_dance_timer_timeout"]

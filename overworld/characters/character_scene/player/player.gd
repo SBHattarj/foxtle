@@ -81,3 +81,22 @@ func save():
 	if event_block_handler.is_blocked:
 		return
 	Core.save_player()
+
+
+func _on_frisk_dance_timer_timeout() -> void:
+	if event_block_handler.is_blocked: return
+	if not Input.is_action_pressed("up"): return
+	if not Input.is_action_pressed("down"): return
+	if direction != Direction.UP:
+		direction = Direction.UP
+		_handle_animation_change()
+		return
+	direction = Direction.DOWN
+	_handle_animation_change()
+
+func get_current_animation() -> String:
+	var animation := super()
+	if animation.ends_with("_%s" % movement_animation_modifier): return animation
+	if not Input.is_action_pressed("up"): return animation
+	if not Input.is_action_pressed("down"): return animation
+	return animation + "_%s" % movement_animation_modifier

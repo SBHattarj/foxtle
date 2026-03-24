@@ -13,7 +13,10 @@ config_version=5
 config/name="Foxtle"
 run/main_scene="uid://bg5u10ifi44jt"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+run/max_fps=60
+boot_splash/image="uid://dx5pbw1q14g0p"
+config/icon="uid://bywe8dnthcqgi"
+boot_splash/minimum_display_time=300
 
 [audio]
 
@@ -36,6 +39,7 @@ gdscript/warnings/integer_division=0
 window/size/viewport_width=576
 window/size/viewport_height=324
 window/size/resizable=false
+window/size/maximize_disabled=true
 window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="viewport"
